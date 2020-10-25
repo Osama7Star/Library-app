@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/Readbooks"
+        android:title="كتب مقروءة"
+        android:icon="@drawable/book"/>
+    <item
+        android:id="@+id/reviews"
+        android:title="مراجعات"
+        android:icon="@drawable/review"/>
+
+    <item
+        android:id="@+id/quotes"
+        android:title="إقتباسات"
+        android:icon="@drawable/quote"/>
+
+</menu>

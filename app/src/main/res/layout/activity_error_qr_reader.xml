@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.ErrorQrReader">
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/tab"
+        android:id="@+id/bottombar"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:layout_below="@+id/bottombar"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="أدخل رقم الكتاب "
+            android:textSize="18sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="ملاحظة : الرجاء إدخال إسم الكتاب مثل ما مكتوب خلف الكتاب أي باللغة الانجليزية فقط "
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            />
+
+    <EditText
+        android:id="@+id/bookId"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+
+        android:background="@drawable/border"
+        android:padding="10dp"
+        android:hint="Example : A12"
+        />
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/green"
+        android:text="ادخل"
+        android:textColor="#fff"
+        android:onClick="EnterBookId"
+        />
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressbar"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation"
+        android:background="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

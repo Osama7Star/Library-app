@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/bg_register"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:layout_gravity="center">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/tvWelcome"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/green"
+                android:textAlignment="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/vibesregular"
+                android:text="أصيل"
+                />
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/logo"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/tvWelcome1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                android:textColor="#fff"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:text="أنت لا تعلم مالا تعلم "
+                android:fontFamily="@font/vibesregular"
+
+                />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_centerInParent="true">
+
+
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintAnimationEnabled="true"
+                    android:padding="5dp"
+                    app:counterOverflowTextAppearance="@style/ErrorText"
+                    app:counterTextAppearance="@style/CounterText"
+                    app:hintTextAppearance="@style/HintText"
+                    android:theme="@style/EditTextHint"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etFullName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/input_register_bg"
+                        android:hint="الإسم الكامل "
+
+                        android:textColor="@color/input_register"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColorHint="@color/input_register_hint"
+                        android:drawableStart="@drawable/person"
+                        android:drawablePadding="10dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:hintAnimationEnabled="true"
+                    android:padding="5dp"
+                    app:counterOverflowTextAppearance="@style/ErrorText"
+                    app:counterTextAppearance="@style/CounterText"
+                    app:hintTextAppearance="@style/HintText"
+                    android:theme="@style/EditTextHint"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUserName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/input_register_bg"
+                        android:hint="إسم المستخدم "
+
+                        android:textColor="@color/input_register"
+                        android:inputType="text"
+                        android:padding="10dp"
+                        android:textColorHint="@color/input_register_hint"
+                        android:drawableStart="@drawable/person"
+                        android:drawablePadding="10dp"
+
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:padding="5dp"
+                    app:counterOverflowTextAppearance="@style/ErrorText"
+                    app:counterTextAppearance="@style/CounterText"
+                    app:hintTextAppearance="@style/HintText"
+                    android:theme="@style/EditTextHint"
+                    app:passwordToggleEnabled="true"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/input_register_bg"
+
+
+                        android:hint="كلمة السر "
+                        android:textColor="@color/input_register"
+                        android:inputType="textPassword"
+                        android:padding="10dp"
+                        android:textColorHint="@color/input_register_hint"
+                        android:drawableStart="@drawable/password"
+                        android:drawablePadding="10dp"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:hintAnimationEnabled="true"
+                    android:padding="5dp"
+                    app:counterOverflowTextAppearance="@style/ErrorText"
+                    app:counterTextAppearance="@style/CounterText"
+                    app:hintTextAppearance="@style/HintText"
+                    android:theme="@style/EditTextHint"
+                    >
+
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUserUniversity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/input_register_bg"
+                        android:hint="إسم الجامعة  "
+                        android:textColor="@color/input_register"
+                        android:padding="10dp"
+                        android:textColorHint="@color/input_register_hint"
+                        android:drawableStart="@drawable/university"
+                        android:drawablePadding="10dp"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:hintAnimationEnabled="true"
+                    android:padding="5dp"
+                    app:counterOverflowTextAppearance="@style/ErrorText"
+                    app:counterTextAppearance="@style/CounterText"
+                    app:hintTextAppearance="@style/HintText"
+                    android:theme="@style/EditTextHint"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCollage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/input_register_bg"
+                        android:hint="الكلّية "
+                        android:textColor="@color/input_register"
+                        android:padding="10dp"
+                        android:textColorHint="@color/input_register_hint"
+                        android:drawableStart="@drawable/collage"
+                        android:drawablePadding="10dp"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    app:hintAnimationEnabled="true"
+                    android:padding="5dp"
+                    app:counterOverflowTextAppearance="@style/ErrorText"
+                    app:counterTextAppearance="@style/CounterText"
+                    app:hintTextAppearance="@style/HintText"
+                    android:theme="@style/EditTextHint"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etBio"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@color/input_register_bg"
+                        android:hint="نبذة تعريفية "
+                        android:padding="10dp"
+                        android:textColor="@color/input_register"
+                        android:textColorHint="@color/input_register_hint"
+                        android:drawableStart="@drawable/bio"
+
+                        android:drawablePadding="10dp"
+                        />
+
+                </com.google.android.material.textfield.TextInputLayout>
+                <Button
+                    android:id="@+id/btnRegister"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dip"
+                    android:background="@color/green"
+                    android:text="تسجيل حساب"
+                    android:textColor="#fff"
+                    android:onClick="SignUp"
+                    />
+
+                <!-- Link to Login Screen -->
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2"
+                android:layout_marginTop="50dp"
+                android:layout_alignParentBottom="true">
+
+
+                <Button
+                    android:id="@+id/btnGotoLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:text="لديك حساب بالفعل ؟ تسجيل دخول "
+                    android:textAllCaps="false"
+                    android:textColor="#fff"
+                    android:textSize="12sp"
+                    android:onClick="goToLogin" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+</RelativeLayout>

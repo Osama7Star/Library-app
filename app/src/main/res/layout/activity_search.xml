@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.Search"
+    android:orientation="vertical">
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/tab"
+        android:id="@+id/bottombar" />
+
+    <LinearLayout
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/bottombar"
+        android:layout_above="@+id/bottom_navigation">
+
+    <EditText
+        android:layout_below="@+id/bottombar"
+        android:id="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="إدخل إسم الكتاب"
+        android:drawableRight="@drawable/ic_search_black_24dp"
+        android:drawablePadding="10dp"
+        android:focusable="true"
+        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:paddingStart="20dp"
+        android:maxLines="1"
+        android:background="@drawable/border"
+        android:imeOptions="actionSearch"
+        android:inputType="text"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvSearchResult"
+        android:layout_below="@+id/etSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llNoBook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:padding="4dp"
+            android:text="للأسف الكتاب غير موجود \n هل تريد اقتراح الكتاب؟"
+            android:layout_marginBottom="20dp"/>
+        <Button
+
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="إقترح الكتاب"
+            android:background="@color/green"
+            android:textColor="#ffff"
+            android:padding="3dp"
+            android:layout_margin="5dp"
+            android:onClick="SuggestBook"/>
+
+
+    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation"
+        android:background="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+         />
+</RelativeLayout>

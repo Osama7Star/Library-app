@@ -1,0 +1,82 @@
+package com.alnajim.osama.library.UI;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.PointF;
+import android.media.AudioManager;
+import android.media.ToneGenerator;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+
+import com.alnajim.osama.library.R;
+import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
+
+public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadListener {
+
+    private QRCodeReaderView qrCodeReaderView;
+    private CheckBox flashlightCheckBox;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_qr_reader);
+        flashlightCheckBox =  findViewById(R.id.flashlight_checkbox);
+
+        qrCodeReaderView = findViewById(R.id.qrdecoderview);
+        qrCodeReaderView.setOnQRCodeReadListener(this);
+
+        // Use this function to enable/disable decoding
+        qrCodeReaderView.setQRDecodingEnabled(true);
+
+        // Use this function to change the autofocus interval (default is 5 secs)
+        qrCodeReaderView.setAutofocusInterval(2000L);
+
+        // Use this function to enable/disable Torch
+        qrCodeReaderView.setTorchEnabled(true);
+
+        // Use this function to set front camera preview
+        qrCodeReaderView.setFrontCamera();
+
+        // Use this function to set back camera preview
+        qrCodeReaderView.setBackCamera();
+        flashlightCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                qrCodeReaderView.setTorchEnabled(isChecked);
+            }
+        });
+
+    }
+
+    // Called when a QR is decoded
+    // "text" : the text encoded in QR
+    // "points" : points where QR control points are placed in View
+    @Override
+    public void onQRCodeRead(String text, PointF[] points)
+    {
+        ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+        toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,150);
+        Intent intent = new Intent(this,BookBorrowing.class);
+        intent.putExtra("bookId",text);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        qrCodeReaderView.startCamera();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        qrCodeReaderView.stopCamera();
+    }
+
+    public void ErrorInQrCode(View view)
+    {
+        startActivity(new Intent(this, ErrorQrReader.class));
+    }
+}

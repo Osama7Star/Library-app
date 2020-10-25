@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview_id"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="2dp"
+    android:layout_marginEnd="2dp"
+    android:layout_marginStart="2dp"
+
+    android:gravity="center">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green">
+
+
+
+        <TextView
+            android:id="@+id/tvCategoryName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="1dp"
+            android:textColor="#fff"
+            android:layout_marginTop="4dp"
+            android:paddingTop="5dp"
+            android:text="asdasdasd"
+            android:paddingBottom="5dp"
+            />
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_below="@+id/tvCategoryName"-->
+<!--            android:gravity="center">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvCategoryBookNumbers"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="bold"-->
+<!--                android:layout_marginEnd="1dp"-->
+<!--                android:textColor="#fff"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:layout_marginBottom="5dp"-->
+<!--                />-->
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:textSize="12sp"-->
+<!--            android:layout_marginEnd="1dp"-->
+<!--            android:textColor="#fff"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:text="@string/books"/>-->
+<!--        </LinearLayout>-->
+    </RelativeLayout>
+
+</LinearLayout>

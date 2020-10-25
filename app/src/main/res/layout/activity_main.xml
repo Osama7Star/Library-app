@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UI.MainActivity"
+    android:orientation="vertical">
+    <include layout="@layout/tab"
+        android:id="@+id/asdasd" />
+
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="40dp">
+
+<ScrollView
+    android:id="@+id/scroll"
+    android:layout_above="@+id/bottom_navigation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+
+   <LinearLayout
+       android:id="@+id/llmain"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:visibility="gone"
+       >
+
+       <RelativeLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+       <androidx.viewpager.widget.ViewPager
+           android:id="@+id/viewPager"
+           android:layout_width="match_parent"
+           android:layout_height="300dp" />
+
+       </RelativeLayout>
+
+       <!--    CATEGORY   -->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginTop="20dp">
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="التصنيفات"
+               android:layout_gravity="center"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:layout_marginBottom="8dp"
+               android:onClick="GoAllCategory"
+               android:typeface="serif"/>
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvCategories"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               />
+       </LinearLayout>
+        <!--END CATEGORIES-->
+
+       <!--    MOST READ  -->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginTop="20dp">
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginBottom="10dp"
+             android:layout_marginStart="5dp"
+             android:layout_marginEnd="5dp">
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_gravity="center"
+                 android:text="الأكثر قراءة"
+                 android:layout_alignParentRight="true"
+                 android:typeface="serif"
+                 android:layout_marginBottom="8dp"/>
+
+
+         </RelativeLayout>
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvMostRead"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+
+    <!-- END MOST READ-->
+
+       <!--     START MOST RATED  -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="الاكثر تقييماً"
+        android:typeface="serif"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp"
+        />
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/rvMostRated"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+   </LinearLayout>
+       <!--     END MOST RATED -->
+
+       <!--    CATEGORY1   -->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginTop="20dp">
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvCategory1"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+    <!--    Authros   -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="الكُتّاب"
+            android:typeface="serif"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="5dp"
+            android:onClick="GoAllAuthors"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAuthors"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+       <!--    CATEGORY2   -->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginTop="20dp"
+           android:layout_marginBottom="0dp">
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvCategory2"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+       <!--    CATEGORY3   -->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           android:layout_marginTop="20dp"
+           android:layout_marginBottom="40dp">
+<!--           <RelativeLayout-->
+<!--               android:layout_width="match_parent"-->
+<!--               android:layout_height="wrap_content"-->
+<!--               android:layout_marginBottom="10dp"-->
+<!--               android:layout_marginStart="8dp"-->
+<!--               android:layout_marginEnd="8dp">-->
+<!--               <TextView-->
+<!--                   android:id="@+id/tvCategory3"-->
+<!--                   android:layout_width="wrap_content"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_gravity="center"-->
+<!--                   android:textStyle="bold"-->
+<!--                   android:layout_alignParentRight="true"-->
+<!--                   android:onClick="GoCateogry3"/>-->
+
+<!--               <TextView-->
+<!--                   android:layout_width="wrap_content"-->
+<!--                   android:layout_height="wrap_content"-->
+<!--                   android:layout_gravity="center"-->
+<!--                   android:layout_alignParentLeft="true"-->
+
+<!--                   android:typeface="serif"-->
+<!--                   android:text="عرض الكل "-->
+<!--                   android:onClick="GoCateogry3"/>-->
+<!--           </RelativeLayout>-->
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvCategory3"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical"
+           >
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="الكتب المنتهية"
+               android:typeface="serif"
+               android:layout_gravity="center"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               android:layout_marginBottom="8dp"
+               android:textColor="@color/black"
+               android:background="@color/red"
+               android:textAlignment="center"
+               android:layout_marginLeft="5dp"
+               android:layout_marginRight="5dp"
+
+               />
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rvEndedDate"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content" />
+       </LinearLayout>
+   </LinearLayout>
+
+
+</ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/quote"
+        android:background="@drawable/add"
+        android:layout_marginBottom="60dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="AddQuote"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_navigation"
+        android:background="?android:attr/windowBackground"
+        android:layout_alignParentBottom="true"
+        />
+<LinearLayout
+    android:id="@+id/llNoInternet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:visibility="gone"
+    >
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/nointrnet"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please Check Your Internet Connectoin"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textAlignment="center"/>
+</LinearLayout>
+
+</RelativeLayout>
