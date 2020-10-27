@@ -153,16 +153,6 @@
             android:typeface="serif"
             android:textSize="16sp"
             android:textStyle="bold"/>
-
-        <TextView
-            android:id="@+id/tvBookCategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:onClick="GoToCategory"
-
-            />
-
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -173,6 +163,16 @@
             android:layout_marginRight="5dp"
             android:layout_marginTop="5dp"
 
+
+            />
+
+
+        <TextView
+            android:id="@+id/tvBookCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:onClick="GoToCategory"
 
             />
 

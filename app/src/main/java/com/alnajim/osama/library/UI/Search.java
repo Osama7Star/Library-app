@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -32,7 +33,7 @@ import java.util.List;
 
 public class Search extends AppCompatActivity {
     LibraryViewModel libraryViewModel;
-     BooksAdapter searchResult;
+    BooksAdapter searchResult;
     RecyclerView recyclerView ;
     LinearLayout llNoBook;
     EditText etSearch ;
@@ -61,7 +62,9 @@ public class Search extends AppCompatActivity {
         recyclerView.setAdapter(searchResult);
         progressBar.setVisibility(View.GONE);
 
-
+        if(etSearch.requestFocus()) {
+            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+        }
 
         try {
             Intent intent = getIntent();
@@ -196,6 +199,7 @@ public class Search extends AppCompatActivity {
     public void Search(String text){
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
+        llNoBook.setVisibility(View.GONE);
         libraryViewModel.Getsearchbook(text);
         libraryViewModel.SearchBookLiveData.observe(Search.this, new Observer<List<BookModel>>() {
             @Override

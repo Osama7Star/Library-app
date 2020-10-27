@@ -83,6 +83,8 @@
             android:textSize="11sp"
             android:padding="2dp"
             android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+
             />
     </RelativeLayout>
 

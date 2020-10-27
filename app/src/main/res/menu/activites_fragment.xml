@@ -10,7 +10,7 @@
 
     <item
         android:id="@+id/nav_activities1"
-        android:title="قرأءات"
+        android:title="قراءات"
         android:icon="@drawable/book"/>
 
 
