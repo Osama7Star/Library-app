@@ -89,7 +89,7 @@ public class BookBorrowing extends AppCompatActivity {
     if (endDate.getText().toString().equals(""))
     {
         Toast.makeText(context, "الرجاء تحديد تاريخ الاعادة", Toast.LENGTH_SHORT).show();
-        return ;
+
     }
         //// GET CURRENT DATE
         Date c = Calendar.getInstance().getTime();
@@ -117,16 +117,6 @@ public class BookBorrowing extends AppCompatActivity {
             }
         });
 
-//        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-//                month = month + 1;
-//
-//                endDateStr =  year + "-"+ month + "-" +day+year ;
-//                endDate.setText(endDateStr);
-//
-//            }
-//        };
        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Date date = dateFormat.parse(endDateStr);
 
@@ -146,6 +136,7 @@ public class BookBorrowing extends AppCompatActivity {
                     nobook.setVisibility(View.GONE);
                     nobook.setText("");
                     if (s.equals("1"))
+                    if (s.equals("1"))
                     libraryViewModel.Updatebookstatus(bookId,"1", sessionManager.GetUserId());
                     libraryViewModel.SignUpLiveData.observe((LifecycleOwner) context , new Observer<String>() {
                         @Override
@@ -158,10 +149,8 @@ public class BookBorrowing extends AppCompatActivity {
                                 llborrowbook.setVisibility(View.GONE);
                                 tvReturn.setVisibility(View.VISIBLE);
                                 tvReturn.setText(" تاريح إعادة الكتاب "+endDateStr);
-                                Log.i("Date", startDateStr +" - "+ finalDate);
 
-                                Log.i("Testing", "Testing");
-
+                                tvReturn.setVisibility(View.GONE);
 
 
                             }

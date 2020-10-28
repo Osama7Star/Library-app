@@ -211,21 +211,25 @@
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:orientation="vertical"
+           android:layout_marginBottom="35dp"
            >
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
-               android:text="الكتب المنتهية"
+               android:text="كٌتب تقرأها حالياً"
+
                android:typeface="serif"
                android:layout_gravity="center"
                android:textSize="20sp"
                android:textStyle="bold"
                android:layout_marginBottom="8dp"
-               android:textColor="@color/black"
-               android:background="@color/red"
+               android:textColor="@color/btn_login_bg"
+               android:background="@color/green"
                android:textAlignment="center"
-               android:layout_marginLeft="5dp"
-               android:layout_marginRight="5dp"
+               android:layout_marginLeft="6dp"
+               android:layout_marginRight="6dp"
+               android:paddingTop="5dp"
+               android:paddingBottom="5dp"
 
                />
            <androidx.recyclerview.widget.RecyclerView
