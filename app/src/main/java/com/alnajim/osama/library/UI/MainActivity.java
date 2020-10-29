@@ -112,9 +112,15 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     }
 
     public void CheckSessions(){
+        context = this;
+
         sessionManager = new SessionManager(this);
         swipeRefreshLayout.setOnRefreshListener(this);
 
+        if(sessionManager.GetFirstTime())
+        {
+            startActivity(new Intent(context, Signup.class));
+        }
         if (sessionManager.isLoggedIn())
         {
             userName.setText(sessionManager.GetUserName());
@@ -161,7 +167,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
         }
-        context = this;
 
         GetData();
 

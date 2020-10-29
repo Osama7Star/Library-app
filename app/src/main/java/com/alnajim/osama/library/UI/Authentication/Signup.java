@@ -26,6 +26,7 @@ public class Signup extends AppCompatActivity {
     ProgressBar progressBar ;
     Context context ;
     Button register ,btnToMan;
+    SessionManager sessionManager;
 
     EditText fullName,userName,password,univeristyName,collageName,bio,imageUrl;
     @Override
@@ -39,6 +40,9 @@ public class Signup extends AppCompatActivity {
         libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
         session = new SessionManager(getApplicationContext());
         InitView();
+        sessionManager = new SessionManager(this);
+
+        sessionManager.SetFirstTime();
         if(fullName.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }

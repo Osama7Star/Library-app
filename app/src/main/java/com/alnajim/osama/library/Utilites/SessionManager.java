@@ -27,6 +27,7 @@ public class SessionManager {
     private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     private static final String KEY_USER_ID = "USER_ID";
     private static final String KEY_USER_NAME = "USER_NAME";
+    private static final String KEY_FIRST_TIME = "first";
 
     public SessionManager(Context context) {
         this._context = context;
@@ -60,5 +61,10 @@ public class SessionManager {
     public  String  GetUserName(){
         return pref.getString(KEY_USER_NAME, "");
     }
+    public  boolean GetFirstTime (){return pref.getBoolean(KEY_FIRST_TIME,true);}
+    public void SetFirstTime ( ){  editor.putBoolean(KEY_FIRST_TIME, false);
+
+        // commit changes
+        editor.commit();}
 
 }
