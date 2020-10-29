@@ -35,7 +35,16 @@ public class BookModel
     private String bookImage ;
     @SerializedName("ISBN")
     private String ISBN ;
+    @SerializedName("borrowingsCounts")
+    private int borrowingsCounts;
 
+    public int getBorrowingsCounts() {
+        return borrowingsCounts;
+    }
+
+    public void setBorrowingsCounts(int borrowingsCounts) {
+        this.borrowingsCounts = borrowingsCounts;
+    }
 
     public BookModel(String bookId, String bookName, int bookPages, String categoryId, String authorId, String tag1, String tag2, String tag3, String bookSummary, String bookStatus, String userId, float bookRate, String bookImage) {
         this.bookId     = bookId;

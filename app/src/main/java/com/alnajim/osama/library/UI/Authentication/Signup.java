@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alnajim.osama.library.R;
+import com.alnajim.osama.library.UI.MainActivity;
 import com.alnajim.osama.library.Utilites.SessionManager;
 import com.alnajim.osama.library.ViewModels.LibraryViewModel;
 
@@ -24,7 +25,7 @@ public class Signup extends AppCompatActivity {
     private SessionManager session;
     ProgressBar progressBar ;
     Context context ;
-    Button register ;
+    Button register ,btnToMan;
 
     EditText fullName,userName,password,univeristyName,collageName,bio,imageUrl;
     @Override
@@ -33,6 +34,7 @@ public class Signup extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
         progressBar = findViewById(R.id.progressbar);
         register = findViewById(R.id.btnRegister);
+        btnToMan = findViewById(R.id.btnToMan);
         context = this;
         libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
         session = new SessionManager(getApplicationContext());
@@ -126,6 +128,7 @@ public class Signup extends AppCompatActivity {
 
 
     public void goToLogin(View view ){startActivity(new Intent(this, Login.class));}
+    public void GoToMain(View view ){startActivity(new Intent(this, MainActivity.class));}
 
 
 

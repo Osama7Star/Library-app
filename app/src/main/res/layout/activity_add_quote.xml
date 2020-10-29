@@ -61,6 +61,22 @@
                 android:textColor="#fff"
                 android:onClick="AddQuote1"
                 />
+            <TextView
+            android:id="@+id/tvNologin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:padding="4dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/red"
+            android:layout_marginTop="30dp"
+            android:text="يجب أن تقوم بتسجيل الدخول حتى تتمكن من إضافة إقتباس"
+                android:visibility="gone"
+
+            />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

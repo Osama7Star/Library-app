@@ -609,9 +609,9 @@ public void GetCategory1Books(){
 
     /// UPDATE THE BOOK INFO
 
-    public void Updatebookstatus(String bookId,String bookStatus ,String userId)
+    public void Updatebookstatus(String bookId,String bookStatus ,String userId,String borrowingCount)
     {
-        LibraryClient.getINSTANCE().Updatebookstatus(bookId,bookStatus, userId).enqueue(new Callback<String>() {
+        LibraryClient.getINSTANCE().Updatebookstatus(bookId,bookStatus, userId,borrowingCount).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 SignUpLiveData.setValue(response.body());

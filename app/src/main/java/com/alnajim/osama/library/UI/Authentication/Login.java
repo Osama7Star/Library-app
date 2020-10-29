@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -28,6 +29,7 @@ public class Login extends AppCompatActivity {
     ProgressBar progressBar ;
     private SessionManager session;
     private SqliteHandler db;
+    Button btnToMan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class Login extends AppCompatActivity {
         userName = findViewById(R.id.etUserName);
         password = findViewById(R.id.etPassword);
         progressBar = findViewById(R.id.progressbar);
-
+        btnToMan    = findViewById(R.id.btnToMan);
         if(userName.requestFocus()) {
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
@@ -106,5 +108,6 @@ public class Login extends AppCompatActivity {
     }
 
     public void BackToRegister(View view){startActivity(new Intent(this, Signup.class));}
+    public void GoToMain(View view ){startActivity(new Intent(this, MainActivity.class));}
 
 }

@@ -267,6 +267,18 @@
                     android:textColor="#fff"
                     android:textSize="12sp"
                     android:onClick="goToLogin" />
+                <Button
+                    android:id="@+id/btnToMan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:background="@null"
+                    android:onClick="GoToMain"
+                    android:text="المتابعة بدون تسجيل حساب"
+                    android:textAllCaps="false"
+                    android:textColor="@color/green1"
+                    android:textSize="12sp"
+                    />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

@@ -132,7 +132,7 @@ public interface LibraryInterface
     Call<String> addbookborrowing(@Query("bookId") String bookId, @Query("userId") String userId, @Query("startDate") Date startDate, @Query("endDate") String endDate, @Query("share") int share);
 
     @GET("updatebookstatus?access-token=test")
-    Call<String> Updatebookstatus(@Query("bookId") String bookId, @Query("bookStatus") String bookStatus, @Query("userId") String userId);
+    Call<String> Updatebookstatus(@Query("bookId") String bookId, @Query("bookStatus") String bookStatus, @Query("userId") String userId,@Query("borrowingCount") String borrowingCount );
 
     @GET("checkuserreview?access-token=test")
     Call<List<String>> CheckUserReview(@Query("bookId") String bookId, @Query("userId") String userId);

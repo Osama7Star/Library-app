@@ -164,8 +164,8 @@ public class LibraryClient {
     public Call<String> addbookborrowing(String bookId, String userId, Date startDate, String endDate,int share){
         return libraryInterface.addbookborrowing(bookId, userId, startDate, endDate,share) ;
     }
-    public Call<String> Updatebookstatus(String bookId,String bookStatus,String userId){
-        return libraryInterface.Updatebookstatus( bookId,bookStatus, userId ) ;
+    public Call<String> Updatebookstatus(String bookId,String bookStatus,String userId,String borrowingCount){
+        return libraryInterface.Updatebookstatus( bookId,bookStatus, userId ,borrowingCount) ;
     }
     public Call<List<String>> CheckUserReview(String bookId,String userId){
         return libraryInterface.CheckUserReview( bookId, userId ) ;

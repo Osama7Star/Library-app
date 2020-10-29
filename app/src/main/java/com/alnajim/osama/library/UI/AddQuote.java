@@ -7,6 +7,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class AddQuote extends AppCompatActivity implements SwipeRefreshLayout.On
     Button addQuoteBtn ;
     ProgressBar progressBar ;
     SessionManager sessionManager ;
+    TextView tvNologin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class AddQuote extends AppCompatActivity implements SwipeRefreshLayout.On
         bottom_navigation  = findViewById(R.id.bottom_navigation);
         addQuoteBtn        = findViewById(R.id.btnAddQuote);
         progressBar = findViewById(R.id.progressbar);
+        tvNologin   = findViewById(R.id.tvNologin);
         quote.requestFocus();
 
         BasicClass basicClass = new BasicClass(bottom_navigation,this);
@@ -52,38 +55,50 @@ public class AddQuote extends AppCompatActivity implements SwipeRefreshLayout.On
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
         }
 
+        if (!sessionManager.isLoggedIn())
+        {
+            tvNologin.setVisibility(View.VISIBLE);
+            addQuoteBtn.setEnabled(false);
+            quote.setEnabled(false);
 
+
+        }
     }
 
     public void AddQuote1(View view)
     {
-        progressBar.setVisibility(View.VISIBLE);
-        LibraryViewModel libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
+        if (!quote.getText().toString().equals(""))
+        {
+            progressBar.setVisibility(View.VISIBLE);
+            LibraryViewModel libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
 
-        String quoteStr = quote.getText().toString();
-        Date c = Calendar.getInstance().getTime();
+            String quoteStr = quote.getText().toString();
+            Date c = Calendar.getInstance().getTime();
 
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-       String startDateStr = df.format(c);
+            SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            String startDateStr = df.format(c);
             if(!quoteStr.equals("")) {
-            libraryViewModel.AddQuote(quoteStr,  sessionManager.GetUserId(), 0,startDateStr);
-            libraryViewModel.AddQuoteLiveData.observe(this, new Observer<String>() {
-                @Override
-                public void onChanged(String s) {
-                    try {
-                        if (s.equals("1")) {
-                            progressBar.setVisibility(View.GONE);
+                libraryViewModel.AddQuote(quoteStr,  sessionManager.GetUserId(), 0,startDateStr);
+                libraryViewModel.AddQuoteLiveData.observe(this, new Observer<String>() {
+                    @Override
+                    public void onChanged(String s) {
+                        try {
+                            if (s.equals("1")) {
+                                progressBar.setVisibility(View.GONE);
 
-                            Toast.makeText(AddQuote.this, "تم إضافة الاقتباس بنجاح", Toast.LENGTH_SHORT).show();
-                            finish();
+                                Toast.makeText(AddQuote.this, "تم إضافة الاقتباس بنجاح", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(AddQuote.this, "حدث خطأ , الرجاء المحاولة مجددا", Toast.LENGTH_SHORT).show();
+
                         }
-                    } catch (Exception e) {
-                        Toast.makeText(AddQuote.this, "حدث خطأ , الرجاء المحاولة مجددا", Toast.LENGTH_SHORT).show();
-
                     }
-                }
-            });
+                });
+            }
         }
+        else
+            Toast.makeText(this, "الرجاء إدخال الإفتباس", Toast.LENGTH_SHORT).show();
 
     }
     public void Search(View view)

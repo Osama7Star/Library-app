@@ -50,6 +50,7 @@ public class BookBorrowing extends AppCompatActivity {
     Button giveBack;
 
     String startDateStr , endDateStr;
+    int borrowingCount = 88 ;
     Context context = this;
     SessionManager sessionManager;
     @Override
@@ -74,6 +75,7 @@ public class BookBorrowing extends AppCompatActivity {
         ISBN = intent.getStringExtra("ISBN");
 
         GetData();
+        CheckBookAvailability();
 
 
 
@@ -137,7 +139,7 @@ public class BookBorrowing extends AppCompatActivity {
                     nobook.setText("");
                     if (s.equals("1"))
                     if (s.equals("1"))
-                    libraryViewModel.Updatebookstatus(bookId,"1", sessionManager.GetUserId());
+                    libraryViewModel.Updatebookstatus(bookId,"1", sessionManager.GetUserId(),borrowingCount+"");
                     libraryViewModel.SignUpLiveData.observe((LifecycleOwner) context , new Observer<String>() {
                         @Override
                         public void onChanged(String s)
@@ -150,7 +152,6 @@ public class BookBorrowing extends AppCompatActivity {
                                 tvReturn.setVisibility(View.VISIBLE);
                                 tvReturn.setText(" تاريح إعادة الكتاب "+endDateStr);
 
-                                tvReturn.setVisibility(View.GONE);
 
 
                             }
@@ -183,7 +184,7 @@ public class BookBorrowing extends AppCompatActivity {
 
                         bookInfo.setVisibility(View.VISIBLE);
                         progressBar.setVisibility(View.GONE);
-
+                        borrowingCount = bookModels.get(0).getBorrowingsCounts();
                         bookName.setText(bookModels.get(0).getBookName());
                         bookId = bookModels.get(0).getBookId();
                         Glide.with(getApplication())
@@ -191,7 +192,6 @@ public class BookBorrowing extends AppCompatActivity {
                                 .error(R.drawable.defaultbook)
                                 .into(imgBook);
 
-                        CheckBookAvailability();
                     }
                     else{
                         progressBar.setVisibility(View.GONE);
@@ -219,65 +219,68 @@ public class BookBorrowing extends AppCompatActivity {
     /// CHECK IF THE BOOK IF AVAILABLE OR NOT
     public void CheckBookAvailability()
     {
-
+   
         libraryViewModel.GetBookByISBN(ISBN);
         libraryViewModel.BookInformationLiveData.observe(this, new Observer<List<BookModel>>()
         {
             @Override
             public void onChanged(List<BookModel> bookModels) {
-                String bookStatus = bookModels.get(0).getBookStatus();
 
-                if (bookStatus.equals("0"))
-                {
+                if (bookModels.size()>0) {
+                    String bookStatus = bookModels.get(0).getBookStatus();
+
+              
+                    if (bookStatus.equals("0")) {
 
                         bookId = bookModels.get(0).getBookId();
-                    nobook.setVisibility(View.GONE);
-                    llborrowbook.setVisibility(View.VISIBLE);
+                        nobook.setVisibility(View.GONE);
+                        llborrowbook.setVisibility(View.VISIBLE);
 
-                    // GET THE BOOK DATA
+                        // GET THE BOOK DATA
 
-                    //// GET CURRENT DATE
-                    Date c = Calendar.getInstance().getTime();
+                        //// GET CURRENT DATE
+                        Date c = Calendar.getInstance().getTime();
 
-                    SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-                    startDateStr = df.format(c);
-                    startDate.setText(startDateStr);
+                        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+                        startDateStr = df.format(c);
+                        startDate.setText(startDateStr);
 
-                    ///// LET USER CHOOSE THE END DATE
-                    endDate.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Calendar cal = Calendar.getInstance();
-                            int year = cal.get(Calendar.YEAR);
-                            int month = cal.get(Calendar.MONTH);
-                            int day = cal.get(Calendar.DAY_OF_MONTH);
+                        ///// LET USER CHOOSE THE END DATE
+                        endDate.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Calendar cal = Calendar.getInstance();
+                                int year = cal.get(Calendar.YEAR);
+                                int month = cal.get(Calendar.MONTH);
+                                int day = cal.get(Calendar.DAY_OF_MONTH);
 
-                            DatePickerDialog dialog = new DatePickerDialog(
-                                    BookBorrowing.this,
-                                    android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                                    mDateSetListener,
-                                    year,month,day);
+                                DatePickerDialog dialog = new DatePickerDialog(
+                                        BookBorrowing.this,
+                                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                                        mDateSetListener,
+                                        year, month, day);
 
-                            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                            dialog.show();
-                        }
-                    });
+                                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                dialog.show();
+                            }
+                        });
 
-                    mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                            month = month + 1;
+                        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                                month = month + 1;
 
-                            endDateStr =  day + "-"+ month + "-" +year ;
+                                endDateStr = day + "-" + month + "-" + year;
 
-                            endDate.setText(endDateStr);
-                            endDateStr =  year + "-"+ month + "-" + day;
+                                endDate.setText(endDateStr);
+                                endDateStr = year + "-" + month + "-" + day;
 
 
-                        }
-                    };
+                            }
+                        };
 
-                }
+                    }
+                
                 else {
 
                     /// CHECK IF THE BOOK IS BORROWED AND THE PERSON WHO BORROWED THE BOOK IS SCAN TO GIVE THE BOOK BACK
@@ -303,8 +306,8 @@ public class BookBorrowing extends AppCompatActivity {
                                     public void onClick(View v)
                                     {
                                         progressBar.setVisibility(View.VISIBLE);
-
-                                        libraryViewModel.Updatebookstatus(bookId,"0","0");
+                                        borrowingCount =borrowingCount+1;
+                                        libraryViewModel.Updatebookstatus(bookId,"0","0",borrowingCount+"");
                                         libraryViewModel.SignUpLiveData.observe((LifecycleOwner) context , new Observer<String>() {
                                             @Override
                                             public void onChanged(String s)
@@ -349,8 +352,17 @@ public class BookBorrowing extends AppCompatActivity {
 
                 }
             }
+            else {
+                }}
+              
         });
+        
+
     }
+    
+    
+    
+   
 
     public void GoToBook(View view)
     {

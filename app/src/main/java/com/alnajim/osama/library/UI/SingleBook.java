@@ -48,7 +48,7 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
     BottomNavigationView bottom_navigation;
     ProgressBar progressBar,reviewProgressbar;
     LinearLayout llmain,llAddReview;
-    Button tag1,tag2,tag3;
+    Button tag1,tag2,tag3,btnAddReview;
     String bookId,ISBN;
     CardView cvUserReviews;
     EditText tvReview;
@@ -78,6 +78,15 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
         libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
         sessionManager = new SessionManager(this);
 
+        if (!sessionManager.isLoggedIn())
+        {
+            btnAddReview.setEnabled(false);
+            tvReview.setText("يجب ان تقوم بتسجيل الدخول قبل إضافة مراجعة");
+            tvReview.setTextColor(getResources().getColor(R.color.red));
+            tvReview.setEnabled(false);
+            ratingBarReview.setEnabled(false);
+
+        }
 
          // CHECK IF THE USER ADD REVIEW FOR THE BOOK BEFORE
         //CheckUserReview ();
@@ -275,6 +284,7 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
         tag1 = findViewById(R.id.tvTag1);
         tag2 = findViewById(R.id.tvTag2);
         tag3 = findViewById(R.id.tvTag3);
+        btnAddReview = findViewById(R.id.btnAddReview);
         reviewProgressbar = findViewById(R.id.reviewProgressbar);
         cvUserReviews = findViewById(R.id.cvUserReviews);
 

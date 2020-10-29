@@ -8,6 +8,7 @@
 package com.alnajim.osama.library.UI;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -35,6 +37,7 @@ import com.alnajim.osama.library.Models.BookModel;
 import com.alnajim.osama.library.Models.CategoryModel;
 import com.alnajim.osama.library.Models.SliderModel;
 import com.alnajim.osama.library.R;
+import com.alnajim.osama.library.UI.Authentication.Login;
 import com.alnajim.osama.library.UI.Authentication.Signup;
 import com.alnajim.osama.library.Utilites.SessionManager;
 import com.alnajim.osama.library.ViewModels.LibraryViewModel;
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     RecyclerView rvMostRead ,rvCategories, rvAuthors,rvMostRated;
     RecyclerView rvCategory1,rvCategory2,rvCategory3,rvEndedDate;
     ImageView search ,backImage ;
-    LinearLayout llmain,llNoInternet;
+    LinearLayout llmain,llNoInternet,llCurrentBook;
     ProgressBar progressBar;
     SwipeRefreshLayout swipeRefreshLayout;
     Context context ;
@@ -84,6 +87,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         search      = findViewById(R.id.imgSearch);
         backImage   = findViewById(R.id.back);
         llmain      = findViewById(R.id.llmain);
+        llCurrentBook = findViewById(R.id.llCurrentBook);
         progressBar = findViewById(R.id.progressbar);
         swipeRefreshLayout = findViewById(R.id.swipeRefresh);
         bottom_navigation  = findViewById(R.id.bottom_navigation);
@@ -111,25 +115,61 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         sessionManager = new SessionManager(this);
         swipeRefreshLayout.setOnRefreshListener(this);
 
-        if (!sessionManager.isLoggedIn())
+        if (sessionManager.isLoggedIn())
         {
-            startActivity(new Intent(this, Signup.class));
-            finish();
+            userName.setText(sessionManager.GetUserName());
+            userName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                    builder1.setMessage("هل تريد تسجيل الخروج ");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "نعم",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    sessionManager.setLogin(false,null,null);
+                                    startActivity(new Intent(context, Login.class));
+
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "لا",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+            });
+
         }
+
         else{
+            userName.setText("تسجيل الدخول");
+            userName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(context, Login.class));
+                }
+            });
 
 
-                    context = this;
-                    userName.setText(sessionManager.GetUserName());
-                    GetData();
-
-
-
-
-            BasicClass basicClass = new BasicClass(bottom_navigation,this);
-            basicClass.setNavigation();
         }
+        context = this;
 
+        GetData();
+
+
+
+
+        BasicClass basicClass = new BasicClass(bottom_navigation,this);
+        basicClass.setNavigation();
     }
 
     public void InitRecyclerViewCategories()
@@ -256,7 +296,12 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             libraryViewModel.EndedBookLiveData.observe(this, new Observer<List<BookModel>>() {
                 @Override
                 public void onChanged(List<BookModel> bookModels) {
-                    endedBookAdapter.setList(bookModels);
+
+                   if (bookModels.size()>0)
+                   {
+                       llCurrentBook.setVisibility(View.VISIBLE);
+                       endedBookAdapter.setList(bookModels);
+                   }
 
                 }
             });
