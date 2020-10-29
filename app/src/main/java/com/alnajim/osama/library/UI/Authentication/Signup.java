@@ -74,7 +74,7 @@ public class Signup extends AppCompatActivity {
 
                 if (userNameStr.length()<5)
                 {
-                    Toast.makeText(context, "اسم المستخدم يجب ان لا يكون اصغر من خمس احرف", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "إسم المستخدم يجب ان لا يكون اصغر من خمس احرف", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
