@@ -38,6 +38,7 @@ public class BasicClass
                     {
                         case R.id.nav_home:
                             context.startActivity(new Intent(context, MainActivity.class));
+
                             break;
                         case R.id.nav_activities:
                             context.startActivity(new Intent(context, UserActivities.class));
