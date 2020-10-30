@@ -127,7 +127,32 @@
            android:layout_height="wrap_content"
            android:orientation="vertical"
            android:layout_marginTop="20dp">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="10dp"
+               android:layout_marginStart="8dp"
+               android:layout_marginEnd="8dp">
+               <TextView
+                   android:id="@+id/tvCategory1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_alignParentRight="true"
+                   />
 
+               <TextView
+                   android:id="@+id/tvShowAll1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_alignParentLeft="true"
+
+                   android:typeface="serif"
+                   android:text="عرض الكل "
+                   />
+           </RelativeLayout>
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/rvCategory1"
                android:layout_width="match_parent"
@@ -164,7 +189,33 @@
            android:orientation="vertical"
            android:layout_marginTop="20dp"
            android:layout_marginBottom="0dp">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="10dp"
+               android:layout_marginStart="8dp"
+               android:layout_marginEnd="8dp">
+               <TextView
+                   android:id="@+id/tvCategory2"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_alignParentRight="true"
+                   />
 
+               <TextView
+                   android:id="@+id/tvShowAll2"
+
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_alignParentLeft="true"
+
+                   android:typeface="serif"
+                   android:text="عرض الكل "
+                  />
+           </RelativeLayout>
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/rvCategory2"
                android:layout_width="match_parent"
@@ -177,31 +228,33 @@
            android:orientation="vertical"
            android:layout_marginTop="20dp"
            android:layout_marginBottom="40dp">
-<!--           <RelativeLayout-->
-<!--               android:layout_width="match_parent"-->
-<!--               android:layout_height="wrap_content"-->
-<!--               android:layout_marginBottom="10dp"-->
-<!--               android:layout_marginStart="8dp"-->
-<!--               android:layout_marginEnd="8dp">-->
-<!--               <TextView-->
-<!--                   android:id="@+id/tvCategory3"-->
-<!--                   android:layout_width="wrap_content"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_gravity="center"-->
-<!--                   android:textStyle="bold"-->
-<!--                   android:layout_alignParentRight="true"-->
-<!--                   android:onClick="GoCateogry3"/>-->
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_marginBottom="10dp"
+               android:layout_marginStart="8dp"
+               android:layout_marginEnd="8dp">
+               <TextView
+                   android:id="@+id/tvCategory3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:textStyle="bold"
+                   android:layout_alignParentRight="true"
+                   />
 
-<!--               <TextView-->
-<!--                   android:layout_width="wrap_content"-->
-<!--                   android:layout_height="wrap_content"-->
-<!--                   android:layout_gravity="center"-->
-<!--                   android:layout_alignParentLeft="true"-->
+               <TextView
+                   android:id="@+id/tvShowAll3"
 
-<!--                   android:typeface="serif"-->
-<!--                   android:text="عرض الكل "-->
-<!--                   android:onClick="GoCateogry3"/>-->
-<!--           </RelativeLayout>-->
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                   android:layout_alignParentLeft="true"
+
+                   android:typeface="serif"
+                   android:text="عرض الكل "
+                  />
+           </RelativeLayout>
            <androidx.recyclerview.widget.RecyclerView
                android:id="@+id/rvCategory3"
                android:layout_width="match_parent"

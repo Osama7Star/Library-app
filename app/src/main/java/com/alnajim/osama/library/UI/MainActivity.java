@@ -44,10 +44,11 @@ import com.alnajim.osama.library.ViewModels.LibraryViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    TextView category3Name,userName;
+    TextView category1Name,category2Name,category3Name,userName,ShowAll1,ShowAll2,ShowAll3;
     RecyclerView rvMostRead ,rvCategories, rvAuthors,rvMostRated;
     RecyclerView rvCategory1,rvCategory2,rvCategory3,rvEndedDate;
     ImageView search ,backImage ;
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     String [] categoryName= new String[3];
 
 
-    String test;
     LibraryViewModel libraryViewModel;
 
      BooksAdapter booksAdapter;
@@ -91,6 +91,14 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         progressBar = findViewById(R.id.progressbar);
         swipeRefreshLayout = findViewById(R.id.swipeRefresh);
         bottom_navigation  = findViewById(R.id.bottom_navigation);
+        category1Name = findViewById(R.id.tvCategory1);
+        category2Name = findViewById(R.id.tvCategory2);
+        category3Name = findViewById(R.id.tvCategory3);
+        ShowAll1      = findViewById(R.id.tvShowAll1);
+        ShowAll2      = findViewById(R.id.tvShowAll2);
+        ShowAll3      = findViewById(R.id.tvShowAll3);
+
+
 
         userName           = findViewById(R.id.tvUserName);
         llNoInternet       = findViewById(R.id.llNoInternet);
@@ -233,35 +241,86 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             libraryViewModel.GetCategory1Books();
             libraryViewModel.Category1BooksLiveData.observe(this, new Observer<List<BookModel>>() {
                 @Override
-                public void onChanged(List<BookModel> bookModels) {
+                public void onChanged(final List<BookModel> bookModels) {
+                    final   String categoryId   = bookModels.get(0).getCategoryId();
+                    final  String categoryName = bookModels.get(0).getCategoryName();
                     booksAdapter1.setList(bookModels);
-                    //category1Name.setText("First");
-//                    categoryId[0] = bookModels.get(0).getCategoryId();
-//                    categoryName[0] = bookModels.get(0).getCategoryName();
-//                    test = bookModels.get(0).getCategoryId();
+                    category1Name.setText(bookModels.get(0).getCategoryName());
+                    category1Name.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+
+
+                            GoToCategory(categoryId,categoryName);
+                        }
+                    });
+
+                    ShowAll1.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GoToCategory(categoryId,categoryName);
+
+                        }
+                    });
                 }
             });
 
             libraryViewModel.GetCategory2Books();
             libraryViewModel.Category2BooksLiveData.observe(this, new Observer<List<BookModel>>() {
                 @Override
-                public void onChanged(List<BookModel> bookModels) {
+                public void onChanged(final List<BookModel> bookModels) {
+                    final   String categoryId   = bookModels.get(0).getCategoryId();
+                    final  String categoryName = bookModels.get(0).getCategoryName();
+                    category2Name.setText(bookModels.get(0).getCategoryName());
+
                     booksAdapter2.setList(bookModels);
-                 //   category2Name.setText("");
-                    categoryId[1] = bookModels.get(0).getCategoryId();
-                    categoryName[1] = bookModels.get(0).getCategoryName();
-                 //   category2Name.setText(categoryName[1]);
+                    category2Name.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+
+
+                            GoToCategory(categoryId,categoryName);
+                        }
+                    });
+
+                    ShowAll2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GoToCategory(categoryId,categoryName);
+
+                        }
+                    });
                 }
             });
 
             libraryViewModel.GetCategory3Books();
             libraryViewModel.Category3BooksLiveData.observe(this, new Observer<List<BookModel>>() {
                 @Override
-                public void onChanged(List<BookModel> bookModels) {
+                public void onChanged(final List<BookModel> bookModels) {
+                    category3Name.setText(bookModels.get(0).getCategoryName());
+
+                 final   String categoryId   = bookModels.get(0).getCategoryId();
+                 final  String categoryName = bookModels.get(0).getCategoryName();
                     booksAdapter3.setList(bookModels);
-                    categoryId[2] = bookModels.get(0).getCategoryId();
-                    categoryName[2] = bookModels.get(0).getCategoryName();
-                //    category3Name.setText(categoryName[2]);
+                    category3Name.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+
+
+
+                            GoToCategory(categoryId,categoryName);
+                        }
+                    });
+
+                    ShowAll3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            GoToCategory(categoryId,categoryName);
+
+                        }
+                    });
 
                 }
             });
@@ -368,10 +427,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         startActivity(new Intent(this, AddQuote.class));
     }
 
-    public void GoCateogry1(View view ){Intent intent = new Intent(this, CategoryBooks.class) ; intent.putExtra("categoryId",categoryId[0]);intent.putExtra("categoryName",categoryName[0]);startActivity(intent); }
-    public void GoCateogry2(View view ){Intent intent = new Intent(this, CategoryBooks.class) ; intent.putExtra("categoryId",categoryId[1]);intent.putExtra("categoryName",categoryName[1]);startActivity(intent);}
-    public void GoCateogry3(View view ){Intent intent = new Intent(this, CategoryBooks.class) ; intent.putExtra("categoryId",categoryId[2]);intent.putExtra("categoryName",categoryName[2]);startActivity(intent);}
 
+    public void GoToCategory(String categoryId,String categoryName)
+    {
+        Intent intent = new Intent(context, CategoryBooks.class);
+
+        intent.putExtra("categoryId",categoryId);
+
+        intent.putExtra("categoryName",categoryName);
+        startActivity(intent);
+    }
     @Override
     public void onBackPressed() {
         finish();
