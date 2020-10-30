@@ -146,7 +146,7 @@
                    android:layout_alignParentBottom="true"
                    android:background="@null"
                    android:onClick="GoToMain"
-                   android:text="المتابعة بدون تسجيل حساب"
+                   android:text="المتابعة بدون تسجيل الدخول "
                    android:textAllCaps="false"
                    android:textColor="@color/green1"
                    android:textSize="12sp"
