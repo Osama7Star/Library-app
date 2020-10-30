@@ -80,6 +80,8 @@ public class Search extends AppCompatActivity {
                     {
                         searchResult.setList(bookModels);
                         progressBar.setVisibility(View.GONE);
+                        closeKeyboard(Search.this);
+
 
                     }
                     catch (Exception e )
