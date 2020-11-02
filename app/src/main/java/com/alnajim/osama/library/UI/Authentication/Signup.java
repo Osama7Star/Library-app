@@ -100,7 +100,6 @@ public class Signup extends AppCompatActivity {
 
                                         try
                                         {
-                                            Toast.makeText(context, "XXXX", Toast.LENGTH_SHORT).show();
 
                                             //session.setLogin(true);
                                             Toast.makeText(Signup.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();

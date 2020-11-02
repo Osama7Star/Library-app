@@ -33,28 +33,19 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
         flashlightCheckBox = findViewById(R.id.flashlight_checkbox);
 
         qrCodeReaderView = findViewById(R.id.qrdecoderview);
-        qrCodeReaderView.setOnQRCodeReadListener(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Toast.makeText(this, "Bigger", Toast.LENGTH_SHORT).show();
 
-        // Use this function to enable/disable decoding
-        qrCodeReaderView.setQRDecodingEnabled(true);
+            requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
+            initilize ();
+        }
+        else{
+            Toast.makeText(this, "Smaller", Toast.LENGTH_SHORT).show();
+            initilize ();
 
-        // Use this function to change the autofocus interval (default is 5 secs)
-        qrCodeReaderView.setAutofocusInterval(2000L);
 
-        // Use this function to enable/disable Torch
-        qrCodeReaderView.setTorchEnabled(true);
+        }
 
-        // Use this function to set front camera preview
-        qrCodeReaderView.setFrontCamera();
-
-        // Use this function to set back camera preview
-        qrCodeReaderView.setBackCamera();
-        flashlightCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                qrCodeReaderView.setTorchEnabled(isChecked);
-            }
-        });
 
     }
 
@@ -63,30 +54,11 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
     // "points" : points where QR control points are placed in View
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            if (checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED)
-            {
-                ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
-                Intent intent = new Intent(this, BookBorrowing.class);
-                intent.putExtra("bookId", text);
-                startActivity(intent);
-                finish();
-            }
-            else{
-                requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
-
-            }
-        } else {
-
-            ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-            toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
-            Intent intent = new Intent(this, BookBorrowing.class);
-            intent.putExtra("bookId", text);
-            startActivity(intent);
-            finish();
-        }
+        ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+        toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
+        Intent intent = new Intent(this, BookBorrowing.class);
+        intent.putExtra("bookId", text);
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -112,19 +84,39 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
         if (requestCode == MY_CAMERA_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
+                initilize ();
 
             } else {
                 Toast.makeText(this, "camera permission denied", Toast.LENGTH_LONG).show();
             }
+
         }
     }
 
-    void ShowReader(String text) {
-        ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-        toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
-        Intent intent = new Intent(this, BookBorrowing.class);
-        intent.putExtra("bookId", text);
-        startActivity(intent);
-        finish();
+    void initilize ()
+    {
+        qrCodeReaderView.setOnQRCodeReadListener(this);
+
+        // Use this function to enable/disable decoding
+        qrCodeReaderView.setQRDecodingEnabled(true);
+
+        // Use this function to change the autofocus interval (default is 5 secs)
+        qrCodeReaderView.setAutofocusInterval(2000L);
+
+        // Use this function to enable/disable Torch
+        qrCodeReaderView.setTorchEnabled(true);
+
+        // Use this function to set front camera preview
+        qrCodeReaderView.setFrontCamera();
+
+        // Use this function to set back camera preview
+        qrCodeReaderView.setBackCamera();
+        flashlightCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                qrCodeReaderView.setTorchEnabled(isChecked);
+            }
+        });
+
     }
+
 }
