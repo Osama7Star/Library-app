@@ -93,10 +93,11 @@ public class BookBorrowing extends AppCompatActivity {
         Toast.makeText(context, "الرجاء تحديد تاريخ الاعادة", Toast.LENGTH_SHORT).show();
 
     }
+     else {
         //// GET CURRENT DATE
         Date c = Calendar.getInstance().getTime();
 
-       final SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
+        final SimpleDateFormat df = new SimpleDateFormat("dd-mm-yyyy");
         startDateStr = df.format(c);
         startDate.setText(startDateStr);
 
@@ -119,7 +120,7 @@ public class BookBorrowing extends AppCompatActivity {
             }
         });
 
-       SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault());
         Date date = dateFormat.parse(endDateStr);
 
         Log.i("endDate", date + " -- "+ endDateStr);
@@ -138,8 +139,8 @@ public class BookBorrowing extends AppCompatActivity {
                     nobook.setVisibility(View.GONE);
                     nobook.setText("");
                     if (s.equals("1"))
-                    if (s.equals("1"))
-                    libraryViewModel.Updatebookstatus(bookId,"1", sessionManager.GetUserId(),borrowingCount+"");
+                        if (s.equals("1"))
+                            libraryViewModel.Updatebookstatus(bookId,"1", sessionManager.GetUserId(),borrowingCount+"");
                     libraryViewModel.SignUpLiveData.observe((LifecycleOwner) context , new Observer<String>() {
                         @Override
                         public void onChanged(String s)
@@ -168,6 +169,7 @@ public class BookBorrowing extends AppCompatActivity {
                 }
             }
         });
+    }
     }
 
 

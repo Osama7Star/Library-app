@@ -21,7 +21,15 @@
             android:orientation="horizontal"
             android:weightSum="5">
 
-
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="56dp"
+                android:layout_margin="5dp"
+                android:layout_marginEnd="10dp"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="2dp" />
 
                 <TextView
                     android:id="@+id/tvActivites"
@@ -32,15 +40,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="#FF000000"/>
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="56dp"
-                android:layout_margin="5dp"
-                android:layout_marginEnd="10dp"
-                app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp" />
+          
 
 
         </LinearLayout>

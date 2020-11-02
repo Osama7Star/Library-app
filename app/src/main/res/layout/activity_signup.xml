@@ -24,10 +24,9 @@
                 android:id="@+id/tvWelcome"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:textColor="@color/green"
                 android:textAlignment="center"
-                android:textSize="25sp"
+                android:textSize="35sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/vibesregular"
                 android:text="أصيل"
@@ -48,7 +47,6 @@
                 android:layout_marginStart="18dp"
                 android:layout_marginEnd="18dp"
                 android:text="أنت لا تعلم مالا تعلم "
-                android:fontFamily="@font/vibesregular"
 
                 />
 
