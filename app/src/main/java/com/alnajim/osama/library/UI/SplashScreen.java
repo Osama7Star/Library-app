@@ -12,7 +12,7 @@ import com.alnajim.osama.library.R;
 public class SplashScreen extends AppCompatActivity {
 
         ProgressBar splashProgress;
-        int SPLASH_TIME = 1000; //This is 3 seconds
+        int SPLASH_TIME = 1000; //This is 1 seconds
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
