@@ -9,6 +9,7 @@ import android.util.Log;
 
 /**
  * Created by Osama Alnajm on 01-Feb-20.
+ * Osama Alnajm
  */
 
 public class SqliteHandler extends SQLiteOpenHelper {
