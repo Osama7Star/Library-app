@@ -90,6 +90,7 @@ public class UserReviewsAdapter extends RecyclerView.Adapter<UserReviewsAdapter.
                 String bookId = reviewsList.get(position).getBookId();
                 Intent intent = new Intent(context, SingleBook.class);
                 intent.putExtra("bookId",bookId);
+                Log.d("bookID", bookId+" -- ");
                 context.startActivity(intent);
             }
         });
