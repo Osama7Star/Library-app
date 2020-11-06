@@ -52,7 +52,7 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
     // Called when a QR is decoded
     // "text" : the text encoded in QR
     // "points" : points where QR control points are placed in View
-    // points
+    // points the points
     @Override
     public void onQRCodeRead(String text, PointF[] points) {
         ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
