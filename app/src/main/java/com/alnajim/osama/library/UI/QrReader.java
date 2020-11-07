@@ -59,7 +59,8 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
         toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150);
         Intent intent = new Intent(this, BookBorrowing.class);
         intent.putExtra("bookId", text);
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        startActivity(intent);
 
     }
 
