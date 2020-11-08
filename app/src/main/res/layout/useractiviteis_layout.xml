@@ -31,7 +31,6 @@
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="#FF000000"
-        android:text="asdasdasd asdasdas asdasd"
         android:layout_toLeftOf="@+id/profile_image"
         />
 

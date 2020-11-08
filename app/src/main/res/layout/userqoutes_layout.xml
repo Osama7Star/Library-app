@@ -17,9 +17,7 @@
 
 		<RelativeLayout
 			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_gravity="right"
-			android:gravity="right">
+			android:layout_height="wrap_content">
 
 			<LinearLayout
 				android:layout_width="wrap_content"
@@ -28,12 +26,7 @@
                 android:id="@+id/test"
                 android:layout_alignParentRight="true">
 
-				<LinearLayout
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_gravity="right"
-					android:gravity="right"
-					android:orientation="horizontal">
+
 
 					<de.hdodenhof.circleimageview.CircleImageView
 						android:id="@+id/profile_image"
@@ -45,38 +38,37 @@
 						app:civ_border_width="2dp"
                         android:layout_gravity="right"/>
 
-					<LinearLayout
-						android:layout_width="wrap_content"
-						android:layout_height="wrap_content"
-						android:orientation="vertical"
-                        android:id="@+id/test1"
-                        android:layout_gravity="right">
-
-						<TextView
-							android:id="@+id/tvFullName"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="right"
-							android:paddingStart="10dp"
-							android:paddingTop="10dp"
-							android:textSize="15sp"
-							android:textStyle="bold" />
-
-						<TextView
-							android:id="@+id/tvUserName"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:layout_gravity="right"
-							android:layout_marginStart="10dp"
-							android:textColor="@color/gray"
-							android:textSize="12sp" />
-					</LinearLayout>
 
 
-				</LinearLayout>
+
 			</LinearLayout>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/test1"
+                android:layout_toLeftOf="@+id/test">
 
+                <TextView
+                    android:id="@+id/tvFullName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/gray"
+                    android:textSize="12sp" />
+            </LinearLayout>
 			<TextView
 				android:id="@+id/tvquote"
 				android:layout_width="match_parent"
@@ -86,8 +78,7 @@
 				android:textColor="#000"
 				android:textSize="16sp"
 				android:textStyle="bold"
-                android:layout_below="@+id/test"
-                />
+                android:layout_below="@+id/test" />
 
 			<LinearLayout
 				android:id="@id/test1"
