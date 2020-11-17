@@ -25,6 +25,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.alnajim.osama.library.Models.BookModel;
 import com.alnajim.osama.library.Models.UserModel;
 import com.alnajim.osama.library.R;
+import com.alnajim.osama.library.UI.Authentication.Login;
 import com.alnajim.osama.library.Utilites.SessionManager;
 import com.alnajim.osama.library.ViewModels.LibraryViewModel;
 import com.bumptech.glide.Glide;
@@ -45,9 +46,10 @@ public class BookBorrowing extends AppCompatActivity {
     ImageView imgBook;
     TextView bookName,nobook,tvReturn;
     CheckBox checkBox,checkBoxRead;
+    LinearLayout llNoLogin;
 
     ProgressBar progressBar;
-    Button giveBack;
+    Button giveBack,btnLogin;
 
     String startDateStr , endDateStr;
     int borrowingCount = 88 ;
@@ -69,18 +71,34 @@ public class BookBorrowing extends AppCompatActivity {
         giveBack     = findViewById(R.id.btnGiveBack);
         tvReturn     = findViewById(R.id.tvReturn);
         checkBox     = findViewById(R.id.checkBox);
+        llNoLogin    = findViewById(R.id.llNoLogin);
+        btnLogin     = findViewById(R.id.btnLogin);
         libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
 
         Intent intent = getIntent();
         ISBN = intent.getStringExtra("ISBN");
 
-        GetData();
-        CheckBookAvailability();
-
-
-
-
         sessionManager = new SessionManager(this);
+        if (!sessionManager.isLoggedIn())
+        {
+            llNoLogin.setVisibility(View.VISIBLE);
+            progressBar.setVisibility(View.GONE);
+            btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(context, Login.class));
+                }
+            });
+        }
+        else{
+            GetData();
+            CheckBookAvailability();
+        }
+
+
+
+
+
 
 
     }

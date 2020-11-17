@@ -12,188 +12,188 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bottombar">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <LinearLayout
-        android:id="@+id/bookInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:visibility="gone"   >
-
-    <ImageView
-        android:id="@+id/imgBook"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:src="@drawable/defaultbook"
-        android:layout_marginTop="20dp"
-        android:onClick="GoToBook"
-        />
-
-        <TextView
-            android:id="@+id/tvBookName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:layout_gravity="center"
-            android:onClick="GoToBook"
-
-            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/llborrowbook"
-            >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">
-
-
-            <TextView
-                android:id="@+id/tvStartDate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="18sp"
-                android:textAlignment="center"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="تاريخ الإستعارة"
-                android:textSize="16sp"
-                android:layout_marginStart="5dp"
-                android:textAlignment="center"
-                android:textStyle="bold"/>
-
-
-        </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/tvEndDate"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:hint="إنقر لإدخال تاريخ الإرجاع"
-            />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="تاريخ الإرجاع"
-            android:textSize="16sp"
-            android:layout_marginStart="5dp"
-            android:textAlignment="center"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
+            android:orientation="vertical">
             <LinearLayout
+                android:id="@+id/bookInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp">
+                android:orientation="vertical"
+                android:visibility="gone"   >
+
+                <ImageView
+                    android:id="@+id/imgBook"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/defaultbook"
+                    android:layout_marginTop="20dp"
+                    android:onClick="GoToBook"
+                    />
+
                 <TextView
+                    android:id="@+id/tvBookName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="هل تريد المشاركة مع الاخرين ؟ "/>
-                <androidx.appcompat.widget.AppCompatCheckBox
-                    android:id="@+id/checkBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
+                    android:textSize="20sp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:layout_gravity="center"
+                    android:onClick="GoToBook"
 
                     />
-            </LinearLayout>
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:background="@color/green"
-            android:layout_gravity="center"
-            android:text="إستعارة"
-            android:textColor="#fff"
-            android:layout_marginTop="20dp"
-            android:onClick="BorrowBook"/>
-    </LinearLayout>
-        <TextView
-            android:id="@+id/tvNoBook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:padding="4dp"
-            android:layout_marginBottom="20dp"
-            android:visibility="gone"
-            android:textColor="@color/red"
-            android:layout_marginTop="30dp"/>
-    </LinearLayout>
-<!--    <LinearLayout-->
-<!--        android:id="@+id/llReturn"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:visibility="gone">-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="هل أنهيت الكتاب ؟ "/>-->
-<!--        <androidx.appcompat.widget.AppCompatCheckBox-->
-<!--            android:id="@+id/checkBoxRead"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:checked="true"-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/llborrowbook"
+                    >
 
-<!--            />-->
-<!--    </LinearLayout>-->
-    <TextView
-        android:id="@+id/tvReturn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textAlignment="center"
-        android:padding="4dp"
-        android:layout_marginBottom="20dp"
-        android:textColor="@color/green"
-        android:layout_marginTop="30dp"
-        />
-    <Button
-        android:id="@+id/btnGiveBack"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:background="@color/green"
-        android:layout_gravity="center"
-        android:text="إرجاع الكتاب"
-        android:textColor="#fff"
-        android:layout_marginTop="20dp"
-        android:onClick="giveBack"
-        android:visibility="gone"/>
-</LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="20dp">
+
+
+                        <TextView
+                            android:id="@+id/tvStartDate"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="تاريخ الإستعارة"
+                            android:textSize="16sp"
+                            android:layout_marginStart="5dp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"/>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/tvEndDate"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"
+                            android:hint="إنقر لإدخال تاريخ الإرجاع"
+                            />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="تاريخ الإرجاع"
+                            android:textSize="16sp"
+                            android:layout_marginStart="5dp"
+                            android:textAlignment="center"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="20dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="هل تريد المشاركة مع الاخرين ؟ "/>
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/checkBox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+
+                            />
+                    </LinearLayout>
+                    <Button
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/green"
+                        android:layout_gravity="center"
+                        android:text="إستعارة"
+                        android:textColor="#fff"
+                        android:layout_marginTop="20dp"
+                        android:onClick="BorrowBook"/>
+                </LinearLayout>
+                <TextView
+                    android:id="@+id/tvNoBook"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:padding="4dp"
+                    android:layout_marginBottom="20dp"
+                    android:visibility="gone"
+                    android:textColor="@color/red"
+                    android:layout_marginTop="30dp"/>
+            </LinearLayout>
+            <!--    <LinearLayout-->
+            <!--        android:id="@+id/llReturn"-->
+            <!--        android:layout_width="match_parent"-->
+            <!--        android:layout_height="wrap_content"-->
+            <!--        android:gravity="center"-->
+            <!--        android:layout_marginTop="20dp"-->
+            <!--        android:visibility="gone">-->
+            <!--        <TextView-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:text="هل أنهيت الكتاب ؟ "/>-->
+            <!--        <androidx.appcompat.widget.AppCompatCheckBox-->
+            <!--            android:id="@+id/checkBoxRead"-->
+            <!--            android:layout_width="wrap_content"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:checked="true"-->
+
+            <!--            />-->
+            <!--    </LinearLayout>-->
+            <TextView
+                android:id="@+id/tvReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                android:padding="4dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/green"
+                android:layout_marginTop="30dp"
+                />
+            <Button
+                android:id="@+id/btnGiveBack"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:layout_gravity="center"
+                android:text="إرجاع الكتاب"
+                android:textColor="#fff"
+                android:layout_marginTop="20dp"
+                android:onClick="giveBack"
+                android:visibility="gone"/>
+        </LinearLayout>
     </ScrollView>
     <ProgressBar
         android:id="@+id/progressbar"
@@ -201,4 +201,40 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"/>
 
+    <LinearLayout
+        android:id="@+id/llNoLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tvNologin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp"
+            android:padding="4dp"
+            android:text="يجب أن تقوم بتسجيل الدخول حتى تتمكن من إستعارة الكتاب"
+            android:textAlignment="center"
+            android:textColor="@color/red"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="تسجيل الدخول"
+            android:typeface="serif"
+
+            android:layout_gravity="center"
+            android:background="@color/green"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#fff"
+            android:onClick="AddQuote1"
+            />
+
+    </LinearLayout>
 </RelativeLayout>
