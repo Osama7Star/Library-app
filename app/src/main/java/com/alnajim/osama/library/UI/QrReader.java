@@ -34,13 +34,13 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
 
         qrCodeReaderView = findViewById(R.id.qrdecoderview);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            Toast.makeText(this, "Bigger", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Bigger", Toast.LENGTH_SHORT).show();
 
             requestPermissions(new String[]{Manifest.permission.CAMERA}, MY_CAMERA_REQUEST_CODE);
             initilize ();
         }
         else{
-            Toast.makeText(this, "Smaller", Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(this, "Smaller", Toast.LENGTH_SHORT).show();
             initilize ();
 
 
@@ -85,7 +85,7 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_CAMERA_REQUEST_CODE) {
             if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
+             //   Toast.makeText(this, "camera permission granted", Toast.LENGTH_LONG).show();
                 initilize ();
 
             } else {
@@ -97,6 +97,7 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
 
     void initilize ()
     {
+
         qrCodeReaderView.setOnQRCodeReadListener(this);
 
         // Use this function to enable/disable decoding
@@ -106,7 +107,7 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
         qrCodeReaderView.setAutofocusInterval(2000L);
 
         // Use this function to enable/disable Torch
-        qrCodeReaderView.setTorchEnabled(true);
+        qrCodeReaderView.setTorchEnabled(false);
 
         // Use this function to set front camera preview
         qrCodeReaderView.setFrontCamera();

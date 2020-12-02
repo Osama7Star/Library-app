@@ -73,7 +73,6 @@ public class QoutesFragment  extends Fragment {
                               tvEmpty.setVisibility(View.VISIBLE);
                               tvEmpty.setText("\n المستخدم لم ينشر إقتباسات حتى الآن  ");
                               progressBar1.setVisibility(View.GONE);
-                              Toast.makeText(getContext(), "asdasdasdasd", Toast.LENGTH_SHORT).show();
                           }
 
 

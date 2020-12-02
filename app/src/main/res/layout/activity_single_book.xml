@@ -90,7 +90,6 @@
                                     android:layout_alignParentRight="true"
                                     android:text="الكاتب :"
                                     android:textSize="16sp"
-                                    android:textStyle="bold"
                                     android:typeface="serif"
 
 
@@ -102,7 +101,9 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:layout_marginRight="80dp"
-                                    android:textSize="18sp" />
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    />
 
                             </RelativeLayout>
 
@@ -118,8 +119,8 @@
                                     android:layout_alignParentRight="true"
                                     android:text=" الصفحات :  "
                                     android:textSize="16sp"
-                                    android:textStyle="bold"
                                     android:typeface="serif"
+
 
                                     />
 
@@ -129,55 +130,86 @@
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
                                     android:layout_marginRight="80dp"
-                                    android:textSize="18sp" />
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    />
                             </RelativeLayout>
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:layout_gravity="right">
 
-                                <LinearLayout
-                                    android:layout_width="match_parent"
+                                <TextView
+                                    android:id="@+id/tv1"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginRight="@dimen/cardview_compat_inset_shadow"
-                                    android:gravity="right">
-
-                                    <ImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginTop="5dp"
-                                        android:layout_marginRight="5dp"
-                                        android:onClick="GoToCategory"
-                                        android:src="@drawable/link"
-                                        android:textSize="18sp"
-                                        android:textStyle="bold"
+                                    android:layout_alignParentRight="true"
+                                    android:text="التصنيف : "
+                                    android:textSize="16sp"
+                                    android:typeface="serif" />
 
 
-                                        />
+                                <TextView
+                                    android:id="@+id/tvBookCategory"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginRight="80dp"
+                                    android:onClick="GoToCategory"
+                                    android:textSize="18sp"
+                                    android:layout_alignParentRight="true"
+                                    android:textStyle="bold"
 
-                                    <TextView
-                                        android:id="@+id/tvBookCategory"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:onClick="GoToCategory"
-                                        android:textSize="18sp"
-
-                                        />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="التصنيف : "
-                                        android:textSize="16sp"
-                                        android:textStyle="bold"
-                                        android:typeface="serif" />
+                                    />
 
 
-                                </LinearLayout>
 
                             </RelativeLayout>
+
+<!--                            <RelativeLayout-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_marginBottom="5dp"-->
+<!--                                android:gravity="right">-->
+
+<!--                                <ImageView-->
+<!--                                    android:id="@+id/img1"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:layout_marginTop="5dp"-->
+<!--                                    android:layout_marginRight="5dp"-->
+<!--                                    android:onClick="GoToCategory"-->
+<!--                                    android:src="@drawable/link"-->
+<!--                                    android:textSize="18sp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:layout_alignRight="@+id/tvBookCategory"/>-->
+
+
+
+
+<!--                                    <TextView-->
+<!--                                        android:id="@+id/tvBookCategory"-->
+<!--                                        android:layout_width="wrap_content"-->
+<!--                                        android:layout_height="wrap_content"-->
+<!--                                        android:onClick="GoToCategory"-->
+<!--                                        android:textSize="18sp"-->
+<!--                                        android:layout_alignRight="@+id/tv1"/>-->
+
+
+<!--                                <TextView-->
+<!--                                    android:id="@+id/tv1"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="wrap_content"-->
+<!--                                    android:text="التصنيف : "-->
+<!--                                    android:textSize="16sp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    android:typeface="serif" />-->
+
+
+
+<!--                            </RelativeLayout>-->
 
                             <RatingBar
                                 android:id="@+id/rating"
