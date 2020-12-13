@@ -22,7 +22,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LibraryClient {
-    private static final String BASE_URL = "http://api.afropolicy.com/api/web/v1/recipes/";
+        private static final String BASE_URL = "http://api.afropolicy.com/api/web/v1/recipes/";
 
     private LibraryInterface libraryInterface;
     private static LibraryClient INSTANCE;

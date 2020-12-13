@@ -68,7 +68,7 @@ public class AllAuthors extends AppCompatActivity implements SwipeRefreshLayout.
     public void GetData()
     {
 
-        libraryViewModel.GetAuthors("20");
+        libraryViewModel.GetAuthors("1000");
 
         libraryViewModel.AuthorsLiveData.observe(this, new Observer<List<AuthorModel>>() {
             @Override

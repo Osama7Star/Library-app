@@ -42,13 +42,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:textColor="#fff"
-                android:textAlignment="center"
                 android:textSize="14sp"
                 android:layout_marginStart="18dp"
                 android:layout_marginEnd="18dp"
-                android:text="أنت لا تعلم مالا تعلم "
-
-                />
+                android:text="إسم المستخدم يجب أن يكون باللغة الانجليزية "  />
 
             <LinearLayout
                 android:layout_width="fill_parent"

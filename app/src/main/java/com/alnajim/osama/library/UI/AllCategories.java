@@ -62,7 +62,7 @@ public class AllCategories extends AppCompatActivity implements SwipeRefreshLayo
     public void Back(View view) { finish(); }
 
     public void GetData(){
-        libraryViewModel.GetCategories("20");
+        libraryViewModel.GetCategories("1000");
 
         libraryViewModel.CategoriesLiveData.observe(this, new Observer<List<CategoryModel>>() {
             @Override

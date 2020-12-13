@@ -110,4 +110,7 @@ public class Login extends AppCompatActivity {
     public void BackToRegister(View view){startActivity(new Intent(this, Signup.class));}
     public void GoToMain(View view ){startActivity(new Intent(this, MainActivity.class));}
 
+
+
+
 }

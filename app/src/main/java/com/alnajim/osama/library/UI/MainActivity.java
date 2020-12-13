@@ -338,7 +338,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
 
             /// GET THE CATEGORIES
-            libraryViewModel.GetCategories("6");
+            libraryViewModel.GetCategories("8");
             libraryViewModel.CategoriesLiveData.observe(this, new Observer<List<CategoryModel>>() {
                 @Override
                 public void onChanged(List<CategoryModel> categoryModels) {
@@ -347,7 +347,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
             });
 
 
-            libraryViewModel.GetAuthors("6");
+            libraryViewModel.GetAuthors("9");
             libraryViewModel.AuthorsLiveData.observe(this, new Observer<List<AuthorModel>>() {
                 @Override
                 public void onChanged(List<AuthorModel> authorModels) {
