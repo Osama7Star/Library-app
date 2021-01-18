@@ -22,7 +22,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LibraryClient {
-        private static final String BASE_URL = "http://api.afropolicy.com/api/web/v1/recipes/";
+    private static final String BASE_URL = "http://api.afropolicy.com/api/web/v1/recipes/";
 
     private LibraryInterface libraryInterface;
     private static LibraryClient INSTANCE;
@@ -51,6 +51,10 @@ public class LibraryClient {
 
     public Call<List<AuthorModel>> GetAuthors(String numberOfAuthors) {
         return libraryInterface.GetAuthors(numberOfAuthors);
+    }
+
+    public Call<List<AuthorModel>> SearchAuthors(String authorName) {
+        return libraryInterface.SearchAuthors(authorName);
     }
 
     public Call<List<BookModel>> GetAuthorBooks(String authorId) {
@@ -195,6 +199,7 @@ public class LibraryClient {
     {
         return libraryInterface.GetEndedBook(userId);
     }
+
 
 
 }

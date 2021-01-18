@@ -31,6 +31,9 @@ public interface LibraryInterface
     @GET("getauthors?access-token=test")
     Call<List<AuthorModel>> GetAuthors(@Query("numberOfAuthors") String numberOfAuthors);
 
+    @GET("searchauthors?access-token=test")
+    Call<List<AuthorModel>> SearchAuthors(@Query("name") String authorName);
+
     @GET("getauthorbooks1?access-token=test&authorid=")
     Call<List<BookModel>> GetAuthorBooks(@Query("authorid") String authorid);
 
@@ -70,7 +73,7 @@ public interface LibraryInterface
     Call<List<BookModel>> Getsearchbook(@Query("text") String text);
 
     @GET("getquotes?access-token=test")
-        Call<List<QuoteModel>> GetQuote();
+    Call<List<QuoteModel>> GetQuote();
 
 
     @GET("getsuggestedbook?access-token=test")

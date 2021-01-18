@@ -5,8 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="black1">#111010</color>
 
-    <color name="green">#51af5b</color>
-    <color name="greenx">#8E1AD52D</color>
+    <color name="green">#228acf</color>
+    <color name="greenx">#228acf</color>
 
     <color name="blue">#2655E9</color>
     <color name="gray">#DA5F5C5C</color>
@@ -20,6 +20,9 @@
     <color name="bg_login">#26ae90</color>
 
     <color name="bg_main">#039BE5</color>
+    <color name="blue1"> #2962ff</color>
+
+
     <color name="white">#AFA8A8</color>
     <color name="input_login">#222222</color>
     <color name="input_login_hint">#999999</color>

@@ -36,12 +36,18 @@
         android:background="@drawable/border"
         android:imeOptions="actionSearch"
         android:inputType="text"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSearchResult"
-        android:layout_below="@+id/etSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etSearch">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSearchResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </RelativeLayout>
+
 
 
 

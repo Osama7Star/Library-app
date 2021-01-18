@@ -42,7 +42,7 @@ import java.util.List;
 
 public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     ImageView bookImage ;
-    TextView bookName , bookAuthor , bookCategory , bookPageNumbers,bookSummary,bookStatus,BorrowerName,BorrowingStartDate,BorrowingEndDate ;
+    TextView bookName , bookAuthor , tvISBN, bookCategory , bookPageNumbers,bookSummary,bookStatus,BorrowerName,BorrowingStartDate,BorrowingEndDate ;
     LibraryViewModel libraryViewModel;
     RatingBar  ratingBar,ratingBarReview;
     BottomNavigationView bottom_navigation;
@@ -115,6 +115,7 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
                     progressBar.setVisibility(View.GONE);
                     llmain.setVisibility(View.VISIBLE);
                     bookName.setText(bookModels.get(0).getBookName());
+                    tvISBN.setText(bookModels.get(0).getISBN());
                     ISBN = bookModels.get(0).getISBN();
                     bookPageNumbers.setText(bookModels.get(0).getBookPages() + "");
                     bookSummary.setText(bookModels.get(0).getBookSummary());
@@ -146,23 +147,35 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
                         @Override
                         public void onChanged(List<AuthorModel> authorModels) {
                             try {
-                                for (int i = 0; i < authorModels.size(); i++) {
+                                bookAuthor.setText(authorModels.get(0).getAuthorName() );
+                                final  String authorId = authorModels.get(0).getAuthorId();
+                                bookAuthor.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
 
-                                    if (!firstTime)
-                                    {
 
-                                        if (i==authorModels.size()-1)
-                                        {
-                                            bookAuthor.append(authorModels.get(i).getAuthorName() );
-
-                                        }
-                                        else {
-                                            bookAuthor.append(authorModels.get(i).getAuthorName()+" , " );
-
-                                        }
+                                        Intent intent = new Intent(context, AuthorBooks.class);
+                                        intent.putExtra("authorId",authorId);
+                                        startActivity(intent);
                                     }
-
-                                }
+                                });
+//                                for (int i = 0; i < authorModels.size(); i++) {
+//
+//                                    if (!firstTime)
+//                                    {
+//
+//                                        if (i==authorModels.size()-1)
+//                                        {
+//                                            bookAuthor.append(authorModels.get(i).getAuthorName() );
+//
+//                                        }
+//                                        else {
+//                                            bookAuthor.append(authorModels.get(i).getAuthorName()+" , " );
+//
+//                                        }
+//                                    }
+//
+//                                }
                                 firstTime = true ;
 
                             } catch (Exception e) {
@@ -271,6 +284,7 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
         bookPageNumbers = findViewById(R.id.tvBookPageNumbers);
         bookSummary     = findViewById(R.id.tvBookSummary);
         bookStatus      = findViewById(R.id.tvBookStatus);
+        tvISBN          = findViewById(R.id.tvISBN);
         BorrowerName  = findViewById(R.id.tvBorrowerName);
         BorrowingStartDate = findViewById(R.id.tvBorrowingStartDate);
         BorrowingEndDate = findViewById(R.id.tvBorrowingEndDate);

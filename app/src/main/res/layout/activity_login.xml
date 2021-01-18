@@ -122,7 +122,7 @@
                    android:layout_width="fill_parent"
                    android:layout_height="wrap_content"
                    android:layout_marginTop="20dip"
-                   android:background="@color/green1"
+                   android:background="@color/green"
                    android:text="تسجيل الدخول"
                    android:textColor="#fff"
                    android:onClick="LogIn"
@@ -148,7 +148,7 @@
                    android:onClick="GoToMain"
                    android:text="المتابعة بدون تسجيل الدخول "
                    android:textAllCaps="false"
-                   android:textColor="@color/green1"
+                   android:textColor="@color/green"
                    android:textSize="12sp"
                    />
            </LinearLayout>

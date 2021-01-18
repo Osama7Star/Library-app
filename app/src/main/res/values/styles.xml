@@ -4,12 +4,12 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/green</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/green1</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/greenx</item>
     </style>
     <style name="HintText" parent="TextAppearance.Design.Hint">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/green1</item>
+        <item name="android:textColor">@color/green</item>
     </style>
 
     <style name="CounterText" parent="TextAppearance.Design.Counter">

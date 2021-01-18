@@ -80,7 +80,7 @@ public class LibraryViewModel extends ViewModel
 
     public void GetMostReadBook()
     {
-      //  MostReadBooksLiveData.setValue(LibraryClient.getINSTANCE().GetMostReadBooks());
+        //  MostReadBooksLiveData.setValue(LibraryClient.getINSTANCE().GetMostReadBooks());
     }
 
 
@@ -100,8 +100,8 @@ public class LibraryViewModel extends ViewModel
 
             @Override
             public void onFailure(Call<List<BookModel>> call, Throwable t) {
-              //  Log.i("errorConnectionsss",t.getMessage());
-                
+                //  Log.i("errorConnectionsss",t.getMessage());
+
             }
         });
     }
@@ -157,14 +157,14 @@ public class LibraryViewModel extends ViewModel
             public void onFailure(Call<List<CategoryModel>> call, Throwable t)
             {
 
-             //   Log.i("GetbookInformation", t.getMessage());
+                //   Log.i("GetbookInformation", t.getMessage());
 
             }
         });
 
     }
 
-//    ////// GET ALL BOOKS'S INFORMATION BY BOOKId
+    //    ////// GET ALL BOOKS'S INFORMATION BY BOOKId
     public void GetBookInformation (String bookId)
     {
         LibraryClient.getINSTANCE().GetBookById(bookId).enqueue(new Callback<List<BookModel>>() {
@@ -181,7 +181,7 @@ public class LibraryViewModel extends ViewModel
 
             @Override
             public void onFailure(Call<List<BookModel>> call, Throwable t) {
-               // Log.i("insideonFailuretest",t.getMessage());
+                // Log.i("insideonFailuretest",t.getMessage());
 
             }
         });
@@ -219,7 +219,7 @@ public class LibraryViewModel extends ViewModel
     }
 
 
-/////GET ALL BOOK'S REVIEWS
+    /////GET ALL BOOK'S REVIEWS
     public void GetBookReviews(String bookId){
 
         LibraryClient.getINSTANCE().GetBookReviews(bookId).enqueue((new Callback<List<ReviewsModel>>() {
@@ -251,9 +251,9 @@ public class LibraryViewModel extends ViewModel
             }
         });
 
-}
+    }
 
-/// GET User Data BY id
+    /// GET User Data BY id
     public void GetUserInformation(String userId){
         LibraryClient.getINSTANCE().GetuUserInformation(userId).enqueue(new Callback<List<UserModel>>() {
             @Override
@@ -283,7 +283,7 @@ public class LibraryViewModel extends ViewModel
         });
     }
 
-//      SUGGEST BOOK
+    //      SUGGEST BOOK
     public void BookSuggest(String bookName,String bookAuthor,String note,String userId)
     {
         LibraryClient.getINSTANCE().BookSuggestion(bookName, bookAuthor, note,userId).enqueue(new Callback<String>() {
@@ -301,7 +301,7 @@ public class LibraryViewModel extends ViewModel
     }
 
 
-//    GET THE QUOTE
+    //    GET THE QUOTE
     public void GetQuote()
     {
         LibraryClient.getINSTANCE().GetQuote().enqueue(new Callback<List<QuoteModel>>() {
@@ -316,7 +316,7 @@ public class LibraryViewModel extends ViewModel
             }
         });
     }
-//GET THE MOST RATED BOOKS
+    //GET THE MOST RATED BOOKS
     public void GetMostRatedBooks(){
         LibraryClient.getINSTANCE().GetMostRatedBooks().enqueue(new Callback<List<BookModel>>() {
             @Override
@@ -332,20 +332,20 @@ public class LibraryViewModel extends ViewModel
     }
 
 
-//    GET FROM SPECIFIC CATEOGRY
-public void GetCategory1Books(){
-    LibraryClient.getINSTANCE().GetCategory1Books().enqueue(new Callback<List<BookModel>>() {
-        @Override
-        public void onResponse(Call<List<BookModel>> call, Response<List<BookModel>> response) {
-            Category1BooksLiveData.setValue(response.body());
-        }
+    //    GET FROM SPECIFIC CATEOGRY
+    public void GetCategory1Books(){
+        LibraryClient.getINSTANCE().GetCategory1Books().enqueue(new Callback<List<BookModel>>() {
+            @Override
+            public void onResponse(Call<List<BookModel>> call, Response<List<BookModel>> response) {
+                Category1BooksLiveData.setValue(response.body());
+            }
 
-        @Override
-        public void onFailure(Call<List<BookModel>> call, Throwable t) {
+            @Override
+            public void onFailure(Call<List<BookModel>> call, Throwable t) {
 
-        }
-    });
-}
+            }
+        });
+    }
 
     public void GetCategory2Books(){
         LibraryClient.getINSTANCE().GetCategory2Books().enqueue(new Callback<List<BookModel>>() {
@@ -381,7 +381,7 @@ public void GetCategory1Books(){
             @Override
             public void onResponse(Call<List<SliderModel>> call, Response<List<SliderModel>> response)
             {
-              //  Log.i("ImageCorrect", response.body().size()+" ");
+                //  Log.i("ImageCorrect", response.body().size()+" ");
 
                 SliderImagesLiveData.setValue(response.body());
 
@@ -389,7 +389,7 @@ public void GetCategory1Books(){
 
             @Override
             public void onFailure(Call<List<SliderModel>> call, Throwable t) {
-              //  Log.i("ImageError", t.getMessage());
+                //  Log.i("ImageError", t.getMessage());
             }
         });
     }
@@ -470,7 +470,7 @@ public void GetCategory1Books(){
             @Override
             public void onFailure(Call<List<UserModel>> call, Throwable t) {
 
-            //    Log.i("borrowingInfo", t.getMessage());
+                //    Log.i("borrowingInfo", t.getMessage());
 
             }
         });
@@ -515,7 +515,7 @@ public void GetCategory1Books(){
             @Override
             public void onResponse(Call<List<AuthorModel>> call, Response<List<AuthorModel>> response) {
                 AuthorsLiveData.setValue(response.body());
-              //  Log.i("AuthoName1", "onResponse: "+response.body().get(0).getAuthorName()+);
+                //  Log.i("AuthoName1", "onResponse: "+response.body().get(0).getAuthorName()+);
             }
 
             @Override
@@ -652,7 +652,7 @@ public void GetCategory1Books(){
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 SignUpLiveData.setValue(response.body());
-           //     Log.i("testfukc", response.body());
+                //     Log.i("testfukc", response.body());
             }
 
             @Override
@@ -710,6 +710,24 @@ public void GetCategory1Books(){
             }
         });
     }
+
+    public void SearchAuthors(String authorName)
+    {
+        LibraryClient.getINSTANCE().SearchAuthors(authorName).enqueue(new Callback<List<AuthorModel>>() {
+            @Override
+            public void onResponse(Call<List<AuthorModel>> call, Response<List<AuthorModel>> response) {
+
+                AuthorsLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<AuthorModel>> call, Throwable t) {
+
+            }
+        });
+
+    }
+
 
 
 }
