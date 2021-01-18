@@ -37,7 +37,8 @@ public class BookModel
     private String ISBN ;
     @SerializedName("borrowingsCounts")
     private int borrowingsCounts;
-
+    @SerializedName("note")
+    private String note;
     public int getBorrowingsCounts() {
         return borrowingsCounts;
     }
@@ -183,5 +184,13 @@ public class BookModel
 
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 }

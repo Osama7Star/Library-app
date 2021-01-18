@@ -42,7 +42,7 @@ import java.util.List;
 
 public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     ImageView bookImage ;
-    TextView bookName , bookAuthor , tvISBN, bookCategory , bookPageNumbers,bookSummary,bookStatus,BorrowerName,BorrowingStartDate,BorrowingEndDate ;
+    TextView bookName , bookAuthor , tvNote,tvISBN, bookCategory , bookPageNumbers,bookSummary,bookStatus,BorrowerName,BorrowingStartDate,BorrowingEndDate ;
     LibraryViewModel libraryViewModel;
     RatingBar  ratingBar,ratingBarReview;
     BottomNavigationView bottom_navigation;
@@ -118,6 +118,12 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
                     tvISBN.setText(bookModels.get(0).getISBN());
                     ISBN = bookModels.get(0).getISBN();
                     bookPageNumbers.setText(bookModels.get(0).getBookPages() + "");
+
+                    String note =bookModels.get(0).getNote();
+                    if (!note.equals("")) {
+                        tvNote.setVisibility(View.VISIBLE);
+                        tvNote.setText(note);
+                    }
                     bookSummary.setText(bookModels.get(0).getBookSummary());
                     String imageUrl = bookModels.get(0).getBookImage();
                     Glide.with(getApplication())
@@ -281,6 +287,7 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
         bookName        = findViewById(R.id.tvBookName);
         bookAuthor      = findViewById(R.id.tvAuthorName);
         bookCategory    = findViewById(R.id.tvBookCategory);
+        tvNote          = findViewById(R.id.tvNote);
         bookPageNumbers = findViewById(R.id.tvBookPageNumbers);
         bookSummary     = findViewById(R.id.tvBookSummary);
         bookStatus      = findViewById(R.id.tvBookStatus);

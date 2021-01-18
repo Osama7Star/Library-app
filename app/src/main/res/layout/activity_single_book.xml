@@ -223,7 +223,20 @@
 
 
 <!--                            </RelativeLayout>-->
+                            <TextView
+                                android:id="@+id/tvNote"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="80dp"
+                                android:onClick="GoToCategory"
+                                android:textSize="18sp"
+                                android:textStyle="bold"
+                                android:layout_gravity="right"
+                                android:gravity="right"
+                                android:visibility="gone"
+                                android:textColor="@color/green"
 
+                                />
                             <RatingBar
                                 android:id="@+id/rating"
                                 android:layout_width="wrap_content"
