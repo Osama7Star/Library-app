@@ -56,7 +56,6 @@ public class AllAuthors extends AppCompatActivity implements SwipeRefreshLayout.
         swipeRefreshLayout.setOnRefreshListener(this);
 
 
-
         GetData();
 
         etSearch.setOnTouchListener(new View.OnTouchListener() {
@@ -69,6 +68,8 @@ public class AllAuthors extends AppCompatActivity implements SwipeRefreshLayout.
 
                 if (event.getAction() == MotionEvent.ACTION_UP)
                 {
+                    authorAdapter.setList(null);
+
                     recyclerView.setVisibility(View.GONE);
                     if (event.getRawX() >= (etSearch.getRight() - etSearch.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         final String text = etSearch.getText().toString().trim();
@@ -89,8 +90,10 @@ public class AllAuthors extends AppCompatActivity implements SwipeRefreshLayout.
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH)
                 {
-                    progressBar.setVisibility(View.VISIBLE);
+                    authorAdapter.setList(null);
 
+                    progressBar.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
                     SearchBook(v.getText().toString());
                     return true;
                 }
@@ -133,8 +136,9 @@ public class AllAuthors extends AppCompatActivity implements SwipeRefreshLayout.
     public void SearchBook(String text){
         progressBar.setVisibility(View.VISIBLE);
         recyclerView.setVisibility(View.GONE);
+
+        recyclerView.setAdapter(authorAdapter);
         tvNotFound.setVisibility(View.GONE);
-    //    recyclerView.setVisibility(View.GONE);
         libraryViewModel.SearchAuthors(text);
         libraryViewModel.AuthorsLiveData.observe(AllAuthors.this, new Observer<List<AuthorModel>>() {
             @Override

@@ -46,6 +46,8 @@
         android:background="@drawable/border"
         android:padding="10dp"
         android:hint="Example : A12"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
         />
     <Button
         android:id="@+id/btnEnter"

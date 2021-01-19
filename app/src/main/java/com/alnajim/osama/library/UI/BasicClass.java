@@ -71,6 +71,8 @@ public class BasicClass
             return false;
         }
     }
+
+
     public static void closeKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
