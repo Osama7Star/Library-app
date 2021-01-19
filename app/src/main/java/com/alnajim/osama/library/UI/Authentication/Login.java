@@ -42,9 +42,7 @@ public class Login extends AppCompatActivity {
         password = findViewById(R.id.etPassword);
         progressBar = findViewById(R.id.progressbar);
         btnToMan    = findViewById(R.id.btnToMan);
-        if(userName.requestFocus()) {
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        }
+        
         // Session manager
         session = new SessionManager(getApplicationContext());
 

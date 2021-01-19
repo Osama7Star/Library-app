@@ -43,9 +43,9 @@ public class Signup extends AppCompatActivity {
         sessionManager = new SessionManager(this);
 
         sessionManager.SetFirstTime();
-        if(fullName.requestFocus()) {
-            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        }
+//        if(fullName.requestFocus()) {
+//            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+//        }
 
     }
 

@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 
 import com.alnajim.osama.library.R;
+import com.alnajim.osama.library.Utilites.SessionManager;
 import com.dlazaro66.qrcodereaderview.QRCodeReaderView;
 
 public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadListener {
@@ -97,7 +98,15 @@ public class QrReader extends Activity implements QRCodeReaderView.OnQRCodeReadL
 
     void initilize ()
     {
+        SessionManager sessionManager = new SessionManager(this);
+        if(sessionManager.GetFirstTimeS())
+        {
+            Toast.makeText(this, "First Time", Toast.LENGTH_SHORT).show();
+            sessionManager.SetFirstTimeS();
+            finish();
 
+            startActivity(new Intent(this,QrReader.class));
+        }
         qrCodeReaderView.setOnQRCodeReadListener(this);
 
         // Use this function to enable/disable decoding

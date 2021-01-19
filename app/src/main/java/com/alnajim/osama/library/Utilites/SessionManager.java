@@ -28,6 +28,8 @@ public class SessionManager {
     private static final String KEY_USER_ID = "USER_ID";
     private static final String KEY_USER_NAME = "USER_NAME";
     private static final String KEY_FIRST_TIME = "first";
+    private static final String KEY_FIRST_TIME_S = "firstS";
+
 
     public SessionManager(Context context) {
         this._context = context;
@@ -66,5 +68,13 @@ public class SessionManager {
 
         // commit changes
         editor.commit();}
+
+    public void SetFirstTimeS ( ){  editor.putBoolean(KEY_FIRST_TIME_S, false);
+         editor.commit();}
+
+    public  boolean GetFirstTimeS (){return pref.getBoolean(KEY_FIRST_TIME_S,true);}
+
+
+
 
 }
