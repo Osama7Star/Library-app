@@ -426,8 +426,9 @@ public class BookBorrowing extends AppCompatActivity {
         Toast.makeText(this, elapsedDays+" - ", Toast.LENGTH_SHORT).show();
     }
 
-
-
-
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this,MainActivity.class));
+    }
 }
 

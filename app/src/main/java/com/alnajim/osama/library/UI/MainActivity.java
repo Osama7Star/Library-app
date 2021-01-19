@@ -10,6 +10,7 @@ package com.alnajim.osama.library.UI;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -32,17 +33,25 @@ import com.alnajim.osama.library.Adapter.AuthorAdapter;
 import com.alnajim.osama.library.Adapter.BooksAdapter;
 import com.alnajim.osama.library.Adapter.CategoryAdapter;
 import com.alnajim.osama.library.Adapter.ImageAdapter;
+import com.alnajim.osama.library.Adapter.SliderAdapterExample;
 import com.alnajim.osama.library.Models.AuthorModel;
 import com.alnajim.osama.library.Models.BookModel;
 import com.alnajim.osama.library.Models.CategoryModel;
+import com.alnajim.osama.library.Models.SliderItem1;
 import com.alnajim.osama.library.Models.SliderModel;
 import com.alnajim.osama.library.R;
 import com.alnajim.osama.library.UI.Authentication.Login;
 import com.alnajim.osama.library.UI.Authentication.Signup;
 import com.alnajim.osama.library.Utilites.SessionManager;
 import com.alnajim.osama.library.ViewModels.LibraryViewModel;
+import com.daimajia.slider.library.SliderAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -59,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     BottomNavigationView bottom_navigation;
     String [] categoryId = new String[3];
     String [] categoryName= new String[3];
+
+     SliderView sliderView;
+    SliderAdapterExample adapter;
 
 
     LibraryViewModel libraryViewModel;
@@ -98,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         ShowAll2      = findViewById(R.id.tvShowAll2);
         ShowAll3      = findViewById(R.id.tvShowAll3);
 
-
+        sliderView = findViewById(R.id.imageSlider);
 
         userName           = findViewById(R.id.tvUserName);
         llNoInternet       = findViewById(R.id.llNoInternet);
@@ -116,6 +128,25 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
        categoriesAdapter   =   new CategoryAdapter(this);
         authorAdapter       =   new AuthorAdapter(this);
         CheckSessions();
+        adapter = new SliderAdapterExample(MainActivity.this);
+        sliderView.setSliderAdapter(adapter);
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
+        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+        sliderView.setIndicatorSelectedColor(Color.WHITE);
+        sliderView.setIndicatorUnselectedColor(Color.GRAY);
+        sliderView.setScrollTimeInSec(3);
+        sliderView.setAutoCycle(true);
+        sliderView.startAutoCycle();
+
+
+        sliderView.setOnIndicatorClickListener(new DrawController.ClickListener() {
+            @Override
+            public void onIndicatorClicked(int position) {
+                Log.i("GGG", "onIndicatorClicked: " + sliderView.getCurrentPagePosition());
+            }
+        });
+
 
     }
 
@@ -440,5 +471,36 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     @Override
     public void onBackPressed() {
         finish();
+    }
+
+
+    ////// ///SLIDER
+    public void renewItems(View view) {
+        List<SliderItem1> sliderItemList = new ArrayList<>();
+        //dummy data
+        for (int i = 0; i < 5; i++) {
+            SliderItem1 sliderItem = new SliderItem1();
+            sliderItem.setDescription("Slider Item " + i);
+            if (i % 2 == 0) {
+                sliderItem.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+            } else {
+                sliderItem.setImageUrl("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+            }
+            sliderItemList.add(sliderItem);
+        }
+        adapter.renewItems(sliderItemList);
+
+    }
+
+    public void removeLastItem(View view) {
+        if (adapter.getCount() - 1 >= 0)
+            adapter.deleteItem(adapter.getCount() - 1);
+    }
+
+    public void addNewItem(View view) {
+        SliderItem1 sliderItem = new SliderItem1();
+        sliderItem.setDescription("Slider Item Added Manually");
+        sliderItem.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+        adapter.addItem(sliderItem);
     }
 }

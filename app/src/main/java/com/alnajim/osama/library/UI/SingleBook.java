@@ -117,12 +117,15 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
                     bookName.setText(bookModels.get(0).getBookName());
                     tvISBN.setText(bookModels.get(0).getISBN());
                     ISBN = bookModels.get(0).getISBN();
+                    if (!bookModels.get(0).getBookStatus().equals("0"))
+                        tvISBN.setBackgroundColor(Color.RED);
                     bookPageNumbers.setText(bookModels.get(0).getBookPages() + "");
 
                     String note =bookModels.get(0).getNote();
                     if (!note.equals("")) {
                         tvNote.setVisibility(View.VISIBLE);
-                        tvNote.setText(note);
+                        tvNote.setText("ملاحظة : ");
+                        tvNote.append(note);
                     }
                     bookSummary.setText(bookModels.get(0).getBookSummary());
                     String imageUrl = bookModels.get(0).getBookImage();
@@ -153,6 +156,9 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
                         @Override
                         public void onChanged(List<AuthorModel> authorModels) {
                             try {
+                                final String name = authorModels.get(0).getAuthorName();
+                                final String imageUrl= authorModels.get(0).getAuthorImageUrl();
+                                final String bio = authorModels.get(0).getAuthorBio();
                                 bookAuthor.setText(authorModels.get(0).getAuthorName() );
                                 final  String authorId = authorModels.get(0).getAuthorId();
                                 bookAuthor.setOnClickListener(new View.OnClickListener() {
@@ -162,6 +168,10 @@ public class SingleBook extends AppCompatActivity implements SwipeRefreshLayout.
 
                                         Intent intent = new Intent(context, AuthorBooks.class);
                                         intent.putExtra("authorId",authorId);
+                                        intent.putExtra("authorName",name);
+                                        intent.putExtra("authorBio",bio);
+                                        intent.putExtra("authorImage",imageUrl);
+
                                         startActivity(intent);
                                     }
                                 });
