@@ -28,6 +28,15 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"/>
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="صَفْحَاتٌ مِنْ وَرَقٍ"
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:fontFamily="@font/vibesregular"/>
+            <TextView
                 android:id="@+id/tvWelcome1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
