@@ -26,23 +26,13 @@
                android:orientation="vertical"
                android:layout_gravity="center">
 
-               <TextView
-                   android:id="@+id/tvWelcome"
-                   android:layout_width="fill_parent"
-                   android:layout_height="wrap_content"
-                   android:layout_marginTop="20dp"
-                   android:textColor="@color/green"
-                   android:textAlignment="center"
-                   android:textSize="25sp"
-                   android:textStyle="bold"
 
-                   android:text="أصيل"
-                   />
                <ImageView
                    android:layout_width="150dp"
                    android:layout_height="150dp"
                    android:src="@drawable/logo"
-                   android:layout_gravity="center"/>
+                   android:layout_gravity="center"
+                   android:layout_marginTop="20dp"/>
                <LinearLayout
                    android:id="@+id/llUserName"
                    android:layout_width="match_parent"
