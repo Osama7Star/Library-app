@@ -11,6 +11,7 @@ import com.alnajim.osama.library.Models.BookModel;
 import com.alnajim.osama.library.Models.BooksActivitesModel;
 import com.alnajim.osama.library.Models.BorrowingModel;
 import com.alnajim.osama.library.Models.CategoryModel;
+import com.alnajim.osama.library.Models.ConfigrationModel;
 import com.alnajim.osama.library.Models.QuoteModel;
 import com.alnajim.osama.library.Models.ReviewsModel;
 import com.alnajim.osama.library.Models.SliderModel;
@@ -69,6 +70,7 @@ public class LibraryViewModel extends ViewModel
     public MutableLiveData<String> UserNameLiveData      = new MutableLiveData<>();
     public MutableLiveData<List<String>> BorrowBookLiveData      = new MutableLiveData<>();
 
+    public MutableLiveData<List<ConfigrationModel>> ConditionsLiveData      = new MutableLiveData<>();
 
 
 
@@ -729,6 +731,23 @@ public class LibraryViewModel extends ViewModel
     }
 
 
+    public void GetConditions()
+    {
+
+        Log.i("test11", "Before the response");
+
+        LibraryClient.getINSTANCE().GetConditions().enqueue(new Callback<List<ConfigrationModel>>() {
+            @Override
+            public void onResponse(Call<List<ConfigrationModel>> call, Response<List<ConfigrationModel>> response) {
+                ConditionsLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<ConfigrationModel>> call, Throwable t) {
+
+            }
+        });
+    }
 
 }
 

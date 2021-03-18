@@ -5,6 +5,7 @@ import com.alnajim.osama.library.Models.BookModel;
 import com.alnajim.osama.library.Models.BooksActivitesModel;
 import com.alnajim.osama.library.Models.BorrowingModel;
 import com.alnajim.osama.library.Models.CategoryModel;
+import com.alnajim.osama.library.Models.ConfigrationModel;
 import com.alnajim.osama.library.Models.QuoteModel;
 import com.alnajim.osama.library.Models.ReviewsModel;
 import com.alnajim.osama.library.Models.SliderModel;
@@ -149,5 +150,8 @@ public interface LibraryInterface
 
     @GET("getendedbook?access-token=test")
     Call<List<BookModel>> GetEndedBook(@Query("userId") String userId);
+
+    @GET("getconditions?access-token=test")
+    Call<List<ConfigrationModel>> GetConditions();
 
 }

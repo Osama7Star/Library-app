@@ -1,65 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    package="com.alnajim.osama.library">
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.alnajim.osama.library">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+	<uses-feature android:name="android.hardware.camera" />
 
+	<uses-permission android:name="android.permission.CAMERA" />
 
-    <application
-        android:usesCleartextTraffic="true"
+	<application
+		android:allowBackup="true"
+		android:icon="@drawable/logo"
+		android:label="@string/app_name"
+		android:roundIcon="@drawable/logo"
+		android:screenOrientation="portrait"
+		android:supportsRtl="true"
+		android:theme="@style/AppTheme"
+		android:usesCleartextTraffic="true"
+		tools:ignore="GoogleAppIndexingWarning">
+		<activity android:name=".UI.Conditions"></activity>
+		<activity android:name=".UI.Slider" />
+		<activity android:name=".UI.ErrorQrReader" />
+		<activity android:name=".UI.QrReader" />
+		<activity android:name=".UI.Authentication.Login" />
+		<activity android:name=".UI.Authentication.Signup" />
+		<activity android:name=".UI.SplashScreen">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
 
-        android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label="@string/app_name"
-        android:roundIcon="@drawable/logo"
-        android:screenOrientation="portrait"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".UI.Slider"></activity>
-        <activity android:name=".UI.ErrorQrReader" />
-        <activity android:name=".UI.QrReader" />
-        <activity android:name=".UI.Authentication.Login" />
-        <activity android:name=".UI.Authentication.Signup" />
-        <activity android:name=".UI.SplashScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".UI.BookBorrowing" />
-        <activity
-            android:name=".UI.AddQuote"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UI.AllAuthors" />
-        <activity android:name=".UI.AllCategories" />
-        <activity
-            android:name=".UI.EditUserInformation"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UI.UserProfile" />
-        <activity android:name=".UI.UserQuotes" />
-        <activity android:name=".UI.UserActivities" />
-        <activity
-            android:name=".UI.SuggestBook"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".UI.Search"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UI.AuthorBooks" />
-        <activity android:name=".UI.CategoryBooks" />
-        <activity
-            android:name=".UI.SingleBook"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".UI.MainActivity" >
-
-        </activity>
-    </application>
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".UI.BookBorrowing" />
+		<activity
+			android:name=".UI.AddQuote"
+			android:windowSoftInputMode="adjustPan" />
+		<activity android:name=".UI.AllAuthors" />
+		<activity android:name=".UI.AllCategories" />
+		<activity
+			android:name=".UI.EditUserInformation"
+			android:windowSoftInputMode="adjustPan" />
+		<activity android:name=".UI.UserProfile" />
+		<activity android:name=".UI.UserQuotes" />
+		<activity android:name=".UI.UserActivities" />
+		<activity
+			android:name=".UI.SuggestBook"
+			android:windowSoftInputMode="adjustPan" />
+		<activity
+			android:name=".UI.Search"
+			android:windowSoftInputMode="adjustPan" />
+		<activity android:name=".UI.AuthorBooks" />
+		<activity android:name=".UI.CategoryBooks" />
+		<activity
+			android:name=".UI.SingleBook"
+			android:windowSoftInputMode="adjustPan" />
+		<activity android:name=".UI.MainActivity"></activity>
+	</application>
 
 </manifest>

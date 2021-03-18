@@ -3,6 +3,7 @@ package com.alnajim.osama.library.UI;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,13 +12,14 @@ import com.alnajim.osama.library.R;
 
 public class SplashScreen extends AppCompatActivity {
 
+    ImageView imageView ;
         ProgressBar splashProgress;
         int SPLASH_TIME = 1000; //This is 1 seconds
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_splash_screen);
-
+            imageView = findViewById(R.id.imgSplash);
 
 
             //Code to start timer and take action after the timer ends
