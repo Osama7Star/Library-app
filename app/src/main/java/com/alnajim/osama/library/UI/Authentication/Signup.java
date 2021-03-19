@@ -90,7 +90,7 @@ public class Signup extends AppCompatActivity {
                     @Override
                     public void onChanged(String s) {
                         if (s.equals("1")) {
-                            Toast.makeText(Signup.this, "إسم المستخدم موجود مسبقاً!\n رجاءا أدخل أسم مستخدم أخر  ", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signup.this, "الإيميل موجود مسبقاً!\n الرجاء المحاولة بإيميل آخر ", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
 
                             email.setText("");

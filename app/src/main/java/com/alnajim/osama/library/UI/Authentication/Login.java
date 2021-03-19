@@ -2,6 +2,7 @@ package com.alnajim.osama.library.UI.Authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -50,6 +51,8 @@ public class Login extends AppCompatActivity {
         btnToMan    = findViewById(R.id.btnToMan);
         tvActivationMessage = findViewById(R.id.tvActivationMessage);
         GetConfigration ( );
+        email.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
         // Session manager
         session = new SessionManager(getApplicationContext());
 
@@ -73,7 +76,7 @@ public class Login extends AppCompatActivity {
         String passwordStr = password.getText().toString();
 
         if (userNameStr.equals("") || passwordStr.equals("")) {
-            Toast.makeText(this, "Fill All Fields", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "الرجاء ملىء كل الحقول", Toast.LENGTH_SHORT).show();
         } else {
             progressBar.setVisibility(View.VISIBLE);
 
