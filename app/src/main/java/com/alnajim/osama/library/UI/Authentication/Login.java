@@ -30,8 +30,8 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
     LibraryViewModel libraryViewModel;
-    EditText email,password;
-    ProgressBar progressBar ;
+    EditText email, password;
+    ProgressBar progressBar;
     TextView tvActivationMessage;
     private SessionManager session;
     private SqliteHandler db;
@@ -49,16 +49,16 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.etEmail);
         password = findViewById(R.id.etPassword);
         progressBar = findViewById(R.id.progressbar11);
-        btnToMan    = findViewById(R.id.btnToMan);
+        btnToMan = findViewById(R.id.btnToMan);
         tvActivationMessage = findViewById(R.id.tvActivationMessage);
-        GetConfigration ( );
+        GetConfigration();
         email.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
-         message ="الرجاء الإنتظار حتى يقوم الأدمن بتفعيل الإيميل";
+        message = "الرجاء الإنتظار حتى يقوم الأدمن بتفعيل الإيميل";
         // Session manager
         session = new SessionManager(getApplicationContext());
 
-        try{
+        try {
             Intent intent = getIntent();
             String userNameStr = intent.getStringExtra("userName");
             String passwordStr = intent.getStringExtra("password");
@@ -66,74 +66,80 @@ public class Login extends AppCompatActivity {
 
             email.setText(userNameStr);
             password.setText(passwordStr);
+        } catch (Exception e) {
         }
-        catch (Exception e )
-        {}
     }
 
 
     public void LogIn(View view) {
         BasicClass.closeKeyboard(this);
-        String userNameStr = email.getText().toString();
+        String emailStr = email.getText().toString();
         String passwordStr = password.getText().toString();
 
-        if (userNameStr.equals("") || passwordStr.equals("")) {
+        if (emailStr.equals("") || passwordStr.equals("")) {
             Toast.makeText(this, "الرجاء ملىء كل الحقول", Toast.LENGTH_SHORT).show();
+
         } else {
-            progressBar.setVisibility(View.VISIBLE);
+            if (!BasicClass.isEmailValid(emailStr))
+            {
+                Toast.makeText(this, "الرجاء إدخال إيميل صحيح ", Toast.LENGTH_SHORT).show();
 
-            libraryViewModel.LogIn(userNameStr, passwordStr)    ;
+            }
+            else
+            {
+                progressBar.setVisibility(View.VISIBLE);
 
-            libraryViewModel.UserInformationLiveData.observe(this, new Observer<List<UserModel>>() {
-                @Override
-                public void onChanged(List<UserModel> userModels) {
-                    try {
-                      //  db.addUser(userModels.get(0).getUserId());
-                      if (userModels.size()>0)
-                      {
-                          if (userModels.get(0).getActive().equals("1"))
-                          {
-                              String userId    = userModels.get(0).getUserId();
-                              String userName  =  userModels.get(0).getUserName();
-                              session.setLogin(true,userId,userName);
-                                message = " ";
-                              startActivity(new Intent(Login.this, MainActivity.class));
-                              finish();
-                          }
-                          else {
-                            //    Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
-                              progressBar.setVisibility(View.GONE);
-                              session.setLogin(false,"userId","userName");
-                              tvActivationMessage.setText(testtest);}
+                libraryViewModel.LogIn(emailStr, passwordStr);
 
-                      }
-                      else  {
-                          Toast.makeText(Login.this,
-                                  "خطأ في كلمة السر او إسم المستخدم", Toast.LENGTH_SHORT).show();
-                          progressBar.setVisibility(View.GONE);
+                libraryViewModel.UserInformationLiveData.observe(this, new Observer<List<UserModel>>() {
+                    @Override
+                    public void onChanged(List<UserModel> userModels) {
+                        try {
+                            //  db.addUser(userModels.get(0).getUserId());
+                            if (userModels.size() > 0) {
+                                if (userModels.get(0).getActive().equals("1")) {
+                                    String userId = userModels.get(0).getUserId();
+                                    String userName = userModels.get(0).getUserName();
+                                    session.setLogin(true, userId, userName);
+                                    message = " ";
+                                    startActivity(new Intent(Login.this, MainActivity.class));
+                                    finish();
+                                } else {
+                                    //    Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
+                                    session.setLogin(false, "userId", "userName");
+                                    tvActivationMessage.setText(testtest);
+                                }
+
+                            } else {
+                                Toast.makeText(Login.this,
+                                        "خطأ في كلمة السر او الإيميل", Toast.LENGTH_SHORT).show();
+                                progressBar.setVisibility(View.GONE);
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(Login.this,
+                                    "خطأ في كلمة السر او الإيميل", Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
+                            Log.i("loginerror", "onChanged: " + e.getMessage());
+
+
                         }
-                    } catch (Exception e) {
-                        Toast.makeText(Login.this,
-                                "خطأ في كلمة السر او إسم المستخدم", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.GONE);
-                        Log.i("loginerror", "onChanged: "+e.getMessage());
-
-
-
                     }
-                }
-            });
+                });
+            }
         }
     }
 
-    public void BackToRegister(View view){startActivity(new Intent(this, Signup.class));}
-    public void GoToMain(View view ){startActivity(new Intent(this, MainActivity.class));}
+    public void BackToRegister(View view) {
+        startActivity(new Intent(this, Signup.class));
+    }
+
+    public void GoToMain(View view) {
+        startActivity(new Intent(this, MainActivity.class));
+    }
 
 
-
-
-    private void GetConfigration ( )
-    {
+    private void GetConfigration() {
         libraryViewModel.GetConditions();
         libraryViewModel.ConditionsLiveData.observe(this, new Observer<List<ConfigrationModel>>() {
             @Override

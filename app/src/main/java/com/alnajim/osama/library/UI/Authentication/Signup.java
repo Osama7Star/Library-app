@@ -1,8 +1,10 @@
 package com.alnajim.osama.library.UI.Authentication;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -39,6 +41,8 @@ public class Signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+
         progressBar = findViewById(R.id.progressbar);
         register = findViewById(R.id.btnRegister);
         tvCondition =findViewById(R.id.tvConditions);
