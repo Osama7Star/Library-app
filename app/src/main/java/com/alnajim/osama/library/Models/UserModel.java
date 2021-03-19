@@ -19,7 +19,9 @@ public class UserModel
     @SerializedName("bio")
     private String bio   ;
     @SerializedName("endDate")
-    private String endDate   ;
+    private String endDate ;
+    @SerializedName("active")
+    private String active ;
 
 
     public UserModel(String userId, String userName, String imageUrl, String universityName, String collageName, String bio) {
@@ -93,5 +95,13 @@ public class UserModel
 
     public void setEndDate(String endDate) {
         this.endDate = endDate;
+    }
+
+    public String getActive() {
+        return active;
+    }
+
+    public void setActive(String active) {
+        this.active = active;
     }
 }

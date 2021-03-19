@@ -49,9 +49,7 @@ public class Signup extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         email.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         sessionManager.SetFirstTime();
-//        if(fullName.requestFocus()) {
-//            getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-//        }
+
         tvCondition.setPaintFlags(tvCondition.getPaintFlags() |   Paint.UNDERLINE_TEXT_FLAG);
 
 
@@ -139,7 +137,7 @@ public class Signup extends AppCompatActivity {
 
 
     public void goToLogin(View view ){startActivity(new Intent(this, Login.class));}
-    public void GoToMain(View view ){startActivity(new Intent(this, MainActivity.class));}
+   // public void GoToMain(View view ){startActivity(new Intent(this, MainActivity.class));}
 
 
 

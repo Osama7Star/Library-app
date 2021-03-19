@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.alnajim.osama.library.Models.ConfigrationModel;
@@ -15,13 +17,13 @@ import com.alnajim.osama.library.ViewModels.LibraryViewModel;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
-import java.util.Observable;
 
 
 public class Conditions extends AppCompatActivity {
     LibraryViewModel libraryViewModel;
     TextView conditions;
     ImageView imageView;
+    ProgressBar progressBar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +31,14 @@ public class Conditions extends AppCompatActivity {
 
         conditions = findViewById(R.id.tvcondition);
         imageView  = findViewById(R.id.imgLogo);
+        progressBar = findViewById(R.id.progress);
         libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
-        Log.i("Conditions", " text");
 
         libraryViewModel.GetConditions();
         libraryViewModel.ConditionsLiveData.observe(this, new Observer<List<ConfigrationModel>>() {
             @Override
             public void onChanged(List<ConfigrationModel> strings) {
+                progressBar.setVisibility(View.GONE);
                 conditions.setText(strings.get(0).getConditions());
                 String imageUrl = strings.get(0).getImageUrl();
                 Glide.with(getApplication())

@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,11 +38,13 @@ import com.alnajim.osama.library.Models.AuthorModel;
 import com.alnajim.osama.library.Models.BookModel;
 import com.alnajim.osama.library.Models.CategoryModel;
 import com.alnajim.osama.library.Models.SliderModel;
+import com.alnajim.osama.library.Models.UserModel;
 import com.alnajim.osama.library.R;
 import com.alnajim.osama.library.UI.Authentication.Login;
 import com.alnajim.osama.library.UI.Authentication.Signup;
 import com.alnajim.osama.library.Utilites.SessionManager;
 import com.alnajim.osama.library.ViewModels.LibraryViewModel;
+import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         search      = findViewById(R.id.imgSearch);
         backImage   = findViewById(R.id.back);
         llmain      = findViewById(R.id.llmain);
-        rlNoInternet = findViewById(R.id.rlNoInternet);
+        rlNoInternet  = findViewById(R.id.rlNoInternet);
         llCurrentBook = findViewById(R.id.llCurrentBook);
         progressBar = findViewById(R.id.progressbar);
         swipeRefreshLayout = findViewById(R.id.swipeRefresh);
@@ -169,7 +172,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     alert11.show();
                 }
             });
-
+            GetData();
+            BasicClass basicClass = new BasicClass(bottom_navigation,this);
+            basicClass.setNavigation();
         }
 
         else{
@@ -178,19 +183,20 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(context, Login.class));
+                    finish();
                 }
             });
-
+            startActivity(new Intent(context, Login.class));
+            finish();
 
         }
 
-        GetData();
 
 
 
 
-        BasicClass basicClass = new BasicClass(bottom_navigation,this);
-        basicClass.setNavigation();
+
+
     }
 
     public void InitRecyclerViewCategories()
@@ -227,6 +233,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     public void GetData()
     {
+        CheckUser();
       if (isNetworkConnected())
       {
           try {
@@ -464,6 +471,29 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
         return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
+
+    void CheckUser()
+    {
+        libraryViewModel.GetUserInformation(sessionManager.GetUserId());
+        libraryViewModel.UserInformationLiveData.observe(this, new Observer<List<UserModel>>() {
+                    @Override
+                    public void onChanged(List<UserModel> userModels)
+                    {
+                       if (userModels.get(0).getActive().equals("0"))
+                       {
+                           Toast.makeText(context, "تم إيقاف حسابك , الرجاء التواصل مع الأدمن ", Toast.LENGTH_LONG).show();
+                           startActivity(new Intent(context, Login.class));
+                            finish();
+                       }
+                       else{
+
+                       }
+
+                    }
+                }
+        );
     }
 
 }

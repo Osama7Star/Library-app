@@ -5,30 +5,40 @@
     android:layout_height="match_parent"
     tools:context=".UI.SplashScreen">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/imgSplash"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:paddingBottom="40dp"
-            android:src="@drawable/logo" />
-
-    <TextView
+        android:layout_centerInParent="true" />
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="صَفْحَاتٌ مِنْ وَرَقٍ"
-        android:textSize="30sp"
-        android:textAlignment="center"
-        android:textStyle="bold"
-        android:textColor="@color/green"
-        android:fontFamily="@font/vibesregular"/>
+        android:layout_height="match_parent">
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imgSplash"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:paddingBottom="40dp"
+                />
+
+            <TextView
+                android:id="@+id/tvSplash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                />
+
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

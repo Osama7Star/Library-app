@@ -61,7 +61,8 @@
                    android:textStyle="bold"
                    android:layout_marginBottom="8dp"
                    android:onClick="GoAllCategory"
-                   android:typeface="serif"/>
+                   android:typeface="serif"
+                   android:textColor="@color/maincolor1"/>
                <androidx.recyclerview.widget.RecyclerView
                    android:id="@+id/rvCategories"
                    android:layout_width="match_parent"
@@ -92,6 +93,7 @@
                        android:textStyle="bold"
                        android:layout_marginBottom="8dp"
                        android:textAlignment="center"
+                       android:textColor="@color/maincolor1"
 
                        />
 
@@ -119,6 +121,7 @@
                    android:textSize="20sp"
                    android:textStyle="bold"
                    android:layout_marginBottom="8dp"
+                   android:textColor="@color/maincolor1"
                    />
                <androidx.recyclerview.widget.RecyclerView
                    android:id="@+id/rvMostRated"
@@ -147,6 +150,7 @@
                        android:textStyle="bold"
                        android:layout_alignParentRight="true"
                        android:textSize="18sp"
+                       android:textColor="@color/maincolor1"
                        />
 
                    <TextView
@@ -158,6 +162,7 @@
 
                        android:typeface="serif"
                        android:text="عرض الكل "
+                       android:textColor="@color/maincolor1"
                        />
                </RelativeLayout>
                <androidx.recyclerview.widget.RecyclerView
@@ -180,7 +185,8 @@
                    android:textSize="20sp"
                    android:textStyle="bold"
                    android:layout_marginBottom="5dp"
-                   android:onClick="GoAllAuthors"/>
+                   android:onClick="GoAllAuthors"
+                   android:textColor="@color/maincolor1"/>
                <androidx.recyclerview.widget.RecyclerView
                    android:id="@+id/rvAuthors"
                    android:layout_width="match_parent"
@@ -210,7 +216,7 @@
                        android:textStyle="bold"
                        android:layout_alignParentRight="true"
                        android:textSize="18sp"
-
+                       android:textColor="@color/maincolor1"
                        />
 
                    <TextView
@@ -223,6 +229,7 @@
 
                        android:typeface="serif"
                        android:text="عرض الكل "
+                       android:textColor="@color/maincolor1"
                        />
                </RelativeLayout>
                <androidx.recyclerview.widget.RecyclerView
@@ -251,7 +258,7 @@
                        android:textStyle="bold"
                        android:layout_alignParentRight="true"
                        android:textSize="18sp"
-
+                       android:textColor="@color/maincolor1"
                        />
 
                    <TextView
@@ -264,6 +271,7 @@
 
                        android:typeface="serif"
                        android:text="عرض الكل "
+                       android:textColor="@color/maincolor1"
                        />
                </RelativeLayout>
                <androidx.recyclerview.widget.RecyclerView
@@ -289,8 +297,7 @@
                    android:textSize="20sp"
                    android:textStyle="bold"
                    android:layout_marginBottom="8dp"
-                   android:textColor="@color/btn_login_bg"
-                   android:background="@color/green"
+                   android:textColor="@color/maincolor1"                   android:background="@color/green"
                    android:textAlignment="center"
                    android:layout_marginLeft="6dp"
                    android:layout_marginRight="6dp"

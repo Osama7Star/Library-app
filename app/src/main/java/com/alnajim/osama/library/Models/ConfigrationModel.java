@@ -5,13 +5,16 @@ import com.google.gson.annotations.SerializedName;
 public class ConfigrationModel {
 
     @SerializedName("conditions")
-    private String conditions ;
+    private String conditions;
     @SerializedName("logo_url")
-
-    private String imageUrl ;
+    private String imageUrl;
     @SerializedName("text")
+    private String text;
+    @SerializedName("splash_time")
+    private int splashTime;
+    @SerializedName("login_message")
+    private String loginMessage;
 
-    private  String text;
 
     public String getConditions() {
         return conditions;
@@ -35,6 +38,22 @@ public class ConfigrationModel {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public int getSplashTime() {
+        return splashTime;
+    }
+
+    public void setSplashTime(int splashTime) {
+        this.splashTime = splashTime;
+    }
+
+    public String getLoginMessage() {
+        return loginMessage;
+    }
+
+    public void setLoginMessage(String loginMessage) {
+        this.loginMessage = loginMessage;
     }
 }
 
