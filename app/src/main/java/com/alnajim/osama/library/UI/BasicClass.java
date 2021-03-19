@@ -14,6 +14,8 @@ import com.alnajim.osama.library.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.net.InetAddress;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Osama Alnajm on 28-Jan-20.
@@ -84,6 +86,8 @@ public class BasicClass
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-
+    public static  boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 
 }

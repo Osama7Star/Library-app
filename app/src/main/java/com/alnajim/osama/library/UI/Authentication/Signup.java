@@ -19,6 +19,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.alnajim.osama.library.R;
+import com.alnajim.osama.library.UI.BasicClass;
 import com.alnajim.osama.library.UI.Conditions;
 import com.alnajim.osama.library.UI.MainActivity;
 import com.alnajim.osama.library.Utilites.SessionManager;
@@ -62,14 +63,14 @@ public class Signup extends AppCompatActivity {
 
         register.setEnabled(false);
         final String fullNameStr = fullName.getText().toString().toLowerCase();
-        String userNameStr1 = email.getText().toString();
-        final String userNameStr = userNameStr1.replace(" ", "");
+        String emailStr1 = email.getText().toString();
+        final String emailStr = emailStr1.replace(" ", "");
         final String passwordStr = password.getText().toString();
         final String univsersityNameStr = univeristyName.getText().toString();
         final String collageNameStr = collageName.getText().toString();
         final String bioStr = bio.getText().toString();
 
-        if (fullNameStr.equals("") || userNameStr.equals("") || passwordStr.equals("") || univsersityNameStr.equals("") ||collageNameStr.equals(""))
+        if (fullNameStr.equals("") || emailStr.equals("") || passwordStr.equals("") || univsersityNameStr.equals("") ||collageNameStr.equals(""))
         {
             Toast.makeText(this, "الرجاء ملىْ كل الحقول", Toast.LENGTH_SHORT).show();
             register.setEnabled(true);
@@ -78,14 +79,14 @@ public class Signup extends AppCompatActivity {
         else{
             register.setEnabled(true);
 
-            if (userNameStr.length()<5)
+            if (!BasicClass.isEmailValid(emailStr))
             {
-                Toast.makeText(context, "إسم المستخدم يجب ان لا يكون اصغر من خمس احرف", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "الرجاء إدخال إيميل صحيح ", Toast.LENGTH_SHORT).show();
             }
             else
             {
                 progressBar.setVisibility(View.VISIBLE);
-                libraryViewModel.Checkusername(userNameStr);
+                libraryViewModel.Checkusername(emailStr);
                 libraryViewModel.UserNameLiveData.observe(this, new Observer<String>() {
                     @Override
                     public void onChanged(String s) {
@@ -98,7 +99,7 @@ public class Signup extends AppCompatActivity {
                         else
                         {
 
-                            libraryViewModel.SignUp(fullNameStr,userNameStr,passwordStr,univsersityNameStr,collageNameStr,bioStr);
+                            libraryViewModel.SignUp(fullNameStr,emailStr,passwordStr,univsersityNameStr,collageNameStr,bioStr);
                             libraryViewModel.SignUpLiveData.observe((LifecycleOwner) context, new Observer<String>() {
                                 @Override
                                 public void onChanged(String s)
@@ -110,7 +111,7 @@ public class Signup extends AppCompatActivity {
                                         //session.setLogin(true);
                                         Toast.makeText(Signup.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(Signup.this, Login.class);
-                                        intent.putExtra("userName",userNameStr);
+                                        intent.putExtra("userName",emailStr);
                                         intent.putExtra("password",passwordStr);
 
                                         startActivity(intent);

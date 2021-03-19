@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
     private SqliteHandler db;
     Button btnToMan;
     private String testtest;
+    String message;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class Login extends AppCompatActivity {
         GetConfigration ( );
         email.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
+         message ="الرجاء الإنتظار حتى يقوم الأدمن بتفعيل الإيميل";
         // Session manager
         session = new SessionManager(getApplicationContext());
 
@@ -94,12 +96,12 @@ public class Login extends AppCompatActivity {
                               String userId    = userModels.get(0).getUserId();
                               String userName  =  userModels.get(0).getUserName();
                               session.setLogin(true,userId,userName);
-
+                                message = " ";
                               startActivity(new Intent(Login.this, MainActivity.class));
                               finish();
                           }
                           else {
-                              Toast.makeText(Login.this, "الرجاء الإنتظار حتى يقوم الأدمن بتفعيل الإيميل ", Toast.LENGTH_SHORT).show();
+                            //    Toast.makeText(Login.this, message, Toast.LENGTH_SHORT).show();
                               progressBar.setVisibility(View.GONE);
                               session.setLogin(false,"userId","userName");
                               tvActivationMessage.setText(testtest);}
