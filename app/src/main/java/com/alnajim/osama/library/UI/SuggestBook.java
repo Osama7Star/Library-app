@@ -66,7 +66,7 @@ public class SuggestBook extends AppCompatActivity {
 
 
         LibraryViewModel libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
-        libraryViewModel.BookSuggest(bookNameS,bookAuthors,bookNotes, "0");
+        libraryViewModel.BookSuggest(bookNameS,bookAuthors,bookNotes,sessionManager.GetUserId() );
         libraryViewModel.AddReviewLiveData.observe(this, new Observer<String>()
         {
             @Override
