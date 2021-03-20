@@ -97,8 +97,9 @@ public class Signup extends AppCompatActivity {
                         if (s.equals("1")) {
                             Toast.makeText(Signup.this, "الإيميل موجود مسبقاً!\n الرجاء المحاولة بإيميل آخر ", Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
+                                    finish();
+                                    return ;
 
-                            email.setText("");
                         }
                         else
                         {
