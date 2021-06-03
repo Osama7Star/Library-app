@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     TextView category1Name,category2Name,category3Name,userName,ShowAll1,ShowAll2,ShowAll3;
     RecyclerView rvMostRead ,rvCategories, rvAuthors,rvMostRated;
-    RecyclerView rvCategory1,rvCategory2,rvCategory3,rvEndedDate;
+    RecyclerView rvCategory1,rvCategory2,rvCategory3,rvEndedDate , rvCategoryLastBooks;
     ImageView search ,backImage ;
     LinearLayout llmain,llNoInternet,llCurrentBook,rlNoInternet;
     ViewPager viewPager;
@@ -74,7 +74,9 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
      BooksAdapter booksAdapter1     ;
      BooksAdapter booksAdapter2         ;
      BooksAdapter booksAdapter3         ;
-     CategoryAdapter categoriesAdapter;
+     BooksAdapter bookAdapterLastbooks         ;
+
+    CategoryAdapter categoriesAdapter;
      AuthorAdapter authorAdapter;
      SessionManager sessionManager;
 
@@ -88,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         rvCategory1 = findViewById(R.id.rvCategory1);
         rvCategory2 = findViewById(R.id.rvCategory2);
         rvCategory3 = findViewById(R.id.rvCategory3);
+        rvCategoryLastBooks = findViewById(R.id.rvCategoryLastBooks);
         rvMostRated = findViewById(R.id.rvMostRated);
         rvEndedDate = findViewById(R.id.rvEndedDate);
         search      = findViewById(R.id.imgSearch);
@@ -110,17 +113,18 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         llNoInternet       = findViewById(R.id.llNoInternet);
         backImage.setVisibility(View.GONE);
 
-         libraryViewModel = ViewModelProviders.of(this).get(LibraryViewModel.class);
+        libraryViewModel  = ViewModelProviders.of(this).get(LibraryViewModel.class);
         booksAdapter      =       new BooksAdapter(this,false,libraryViewModel);
-         mostRatedBooksAdapter      =    new BooksAdapter(this,true,libraryViewModel);
+        mostRatedBooksAdapter  =    new BooksAdapter(this,true,libraryViewModel);
         endedBookAdapter      =    new BooksAdapter(this,true,libraryViewModel);
 
          booksAdapter1     =       new BooksAdapter(this,false,libraryViewModel);
          booksAdapter2     =       new BooksAdapter(this,false,libraryViewModel);
          booksAdapter3     =       new BooksAdapter(this,false,libraryViewModel);
+         bookAdapterLastbooks     = new BooksAdapter(this,false,libraryViewModel);
 
        categoriesAdapter   =   new CategoryAdapter(this);
-        authorAdapter       =   new AuthorAdapter(this);
+        authorAdapter      =   new AuthorAdapter(this);
         CheckSessions();
 
 
@@ -205,6 +209,16 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         rvCategories.setLayoutManager(new GridLayoutManager(this,2));
         rvCategories.setAdapter(categoriesAdapter);
     }
+
+    public void InitRecyclerViewLastBooks()
+    {
+        rvCategoryLastBooks =  findViewById(R.id.rvCategoryLastBooks);
+        rvCategories.setLayoutManager(new GridLayoutManager(this,2));
+        rvCategories.setAdapter(categoriesAdapter);
+    }
+
+
+
     public void InitRecyclerViewMostRated(RecyclerView recyclerView , BooksAdapter booksAdapter)
     {
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
@@ -314,6 +328,17 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                   }
               });
 
+              /// GET LAST BOOKS
+              libraryViewModel.GetLastBooks();
+              libraryViewModel.LastBooksLiveData.observe(this, new Observer<List<BookModel>>() {
+                  @Override
+                  public void onChanged(final List<BookModel> bookModels) {
+
+                       bookAdapterLastbooks.setList(bookModels);
+
+                  }
+              });
+
               libraryViewModel.GetCategory3Books();
               libraryViewModel.Category3BooksLiveData.observe(this, new Observer<List<BookModel>>() {
                   @Override
@@ -406,10 +431,11 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
               InitRecyclerViewCategories();
               InitRecyclerViewAuthors();
-              InitRecyclerViewCategory(rvMostRead, booksAdapter);
+              InitRecyclerViewCategory(rvMostRead ,  booksAdapter);
               InitRecyclerViewCategory(rvCategory1, booksAdapter1);
               InitRecyclerViewCategory(rvCategory2, booksAdapter2);
               InitRecyclerViewCategory(rvCategory3, booksAdapter3);
+              InitRecyclerViewCategory(rvCategoryLastBooks,bookAdapterLastbooks);
               InitRecyclerViewMostRated(rvMostRated, mostRatedBooksAdapter);
               InitRecyclerViewMostRated(rvEndedDate, endedBookAdapter);
 

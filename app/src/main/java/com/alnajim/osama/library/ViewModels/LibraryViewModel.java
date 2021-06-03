@@ -44,7 +44,9 @@ public class LibraryViewModel extends ViewModel
     public MutableLiveData<List<BookModel>> Category1BooksLiveData            = new MutableLiveData<>();
     public MutableLiveData<List<BookModel>> Category2BooksLiveData            = new MutableLiveData<>();
     public MutableLiveData<List<BookModel>> Category3BooksLiveData            = new MutableLiveData<>();
-    public MutableLiveData<List<BookModel>> EndedBookLiveData            = new MutableLiveData<>();
+    public MutableLiveData<List<BookModel>> EndedBookLiveData                 = new MutableLiveData<>();
+    public MutableLiveData<List<BookModel>> LastBooksLiveData                      = new MutableLiveData<>();
+
 
 
     ///
@@ -461,6 +463,26 @@ public class LibraryViewModel extends ViewModel
     }
 
 
+
+    /// GET THE LAST BOOKS
+    public void GetLastBooks() {
+        LibraryClient.getINSTANCE().GetLastBooks().enqueue(new Callback<List<BookModel>>() {
+            @Override
+            public void onResponse(Call<List<BookModel>> call, Response<List<BookModel>> response) {
+                LastBooksLiveData.setValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<BookModel>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+
+
+
     public void Getborrowedinfo (String bookId)
     {
         LibraryClient.getINSTANCE().Getborrowedinfo(bookId).enqueue(new Callback<List<UserModel>>() {
@@ -748,6 +770,10 @@ public class LibraryViewModel extends ViewModel
             }
         });
     }
+
+
+
+
 
 }
 

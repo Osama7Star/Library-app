@@ -247,6 +247,44 @@
 							android:layout_height="wrap_content" />
 					</LinearLayout>
 					<!--    CATEGORY3   -->
+
+<!--					LAST BOOKS-->
+
+					<!--    CATEGORY2   -->
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="20dp"
+						android:layout_marginBottom="0dp"
+						android:orientation="vertical">
+
+						<RelativeLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginStart="8dp"
+							android:layout_marginEnd="8dp"
+							android:layout_marginBottom="10dp">
+
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_alignParentRight="true"
+								android:layout_gravity="center"
+								android:textColor="@color/maincolor1"
+								android:textSize="18sp"
+								android:textStyle="bold"
+								android:text=" آخر الكتب المضافة"/>
+
+
+						</RelativeLayout>
+
+						<androidx.recyclerview.widget.RecyclerView
+							android:id="@+id/rvCategoryLastBooks"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content" />
+					</LinearLayout>
+					<!--    CATEGORY3   -->
+<!--					LAST BOOKS -->
 					<LinearLayout
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"

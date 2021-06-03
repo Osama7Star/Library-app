@@ -66,6 +66,13 @@ public class LibraryClient {
         return libraryInterface.GetBookById(bookId);
     }
 
+    /// GET THE LAST BOOKS
+    public Call<List<BookModel>> GetLastBooks() {
+        return libraryInterface.GetLastBooks();
+    }
+
+
+
     public Call<List<CategoryModel>> GetCategories(String pageSize) {
         return libraryInterface.GetCategories(pageSize);
     }

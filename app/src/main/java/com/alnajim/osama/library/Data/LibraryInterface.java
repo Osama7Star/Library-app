@@ -26,6 +26,8 @@ public interface LibraryInterface
     @GET("getbooks?access-token=test")
     Call<List<BookModel>> GetBooks();
 
+    @GET("getlastbooks?access-token=test")
+    Call<List<BookModel>> GetLastBooks();
     @GET("getmostratedbooks?access-token=test")
     Call<List<BookModel>> GetMostRatedBooks();
 
