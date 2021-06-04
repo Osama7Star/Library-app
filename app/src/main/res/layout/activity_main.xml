@@ -273,7 +273,7 @@
 								android:textColor="@color/maincolor1"
 								android:textSize="18sp"
 								android:textStyle="bold"
-								android:text=" آخر الكتب المضافة"/>
+								android:text="  آخر الكتب المضافة "/>
 
 
 						</RelativeLayout>
