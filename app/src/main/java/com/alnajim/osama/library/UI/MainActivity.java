@@ -276,7 +276,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                   @Override
                   public void onChanged(final List<BookModel> bookModels) {
                       final   String categoryId   = bookModels.get(0).getCategoryId();
-                      final  String categoryName = bookModels.get(0).getCategoryName();
+                      final   String categoryName  = bookModels.get(0).getCategoryName();
                       booksAdapter1.setList(bookModels);
                       category1Name.setText(bookModels.get(0).getCategoryName());
                       category1Name.setOnClickListener(new View.OnClickListener() {
